@@ -34,11 +34,7 @@ const About = () => {
             
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-gray-50 p-6 rounded-xl text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">15+</div>
-                <div className="text-gray-600">Proyectos completados</div>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-xl text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">3+</div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">8+</div>
                 <div className="text-gray-600">Años de experiencia</div>
               </div>
             </div>
