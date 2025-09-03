@@ -2,41 +2,21 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "Plataforma de comercio electrónico completa con carrito de compras, pagos integrados y panel de administración.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      github: "https://github.com",
-      demo: "https://demo.com"
+      title: "Archidrop",
+      description: "Mantenedor en NodeJS que descomprime archivos desde cualquier lugar a Dropbox, usado para fines personales relativos al archivismo.",
+      image: "https://i.blogs.es/cd609b/zip-file/450_1000.jpg",
+      technologies: ["Node.js"],
+      github: "https://github.com/robertocaamanor/archidrop",
     },
-    {
-      id: 2,
-      title: "Task Management App",
-      description: "Aplicación de gestión de tareas con colaboración en tiempo real, notificaciones y seguimiento de progreso.",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop",
-      technologies: ["React", "TypeScript", "Firebase", "TailwindCSS"],
-      github: "https://github.com",
-      demo: "https://demo.com"
-    },
-    {
-      id: 3,
-      title: "Weather Dashboard",
-      description: "Dashboard del clima con pronósticos, mapas interactivos y alertas personalizadas.",
-      image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop",
-      technologies: ["React", "API Integration", "Chart.js", "CSS3"],
-      github: "https://github.com",
-      demo: "https://demo.com"
-    },
-    {
-      id: 4,
-      title: "Social Media Analytics",
-      description: "Herramienta de análisis de redes sociales con visualización de datos y reportes automáticos.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
-      technologies: ["React", "D3.js", "Python", "PostgreSQL"],
-      github: "https://github.com",
-      demo: "https://demo.com"
-    }
-  ];
+  ] as Array<{
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+    technologies: string[];
+    github: string;
+    demo?: string; // Propiedad opcional
+  }>;
 
   return (
     <section id="projects" className="py-20 bg-gray-50">
@@ -96,17 +76,19 @@ const Projects = () => {
                     </svg>
                     Código
                   </a>
-                  <a 
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                    Demo
-                  </a>
+                  {project.demo && (
+                    <a 
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      Demo
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
