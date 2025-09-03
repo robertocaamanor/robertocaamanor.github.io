@@ -3,9 +3,10 @@ const About = () => {
     { name: 'React', level: 90 },
     { name: 'TypeScript', level: 85 },
     { name: 'Node.js', level: 80 },
-    { name: 'Python', level: 75 },
-    { name: 'TailwindCSS', level: 88 },
-    { name: 'MongoDB', level: 70 },
+    { name: 'Spring Boot', level: 90 },
+    { name: 'VueJS', level: 88 },
+    { name: 'PostgreSQL', level: 80 },
+    { name: 'Docker', level: 60 },
   ];
 
   return (
@@ -25,8 +26,8 @@ const About = () => {
             <div className="bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl p-8 text-white mb-8">
               <h3 className="text-2xl font-bold mb-4">Mi Historia</h3>
               <p className="text-blue-100 leading-relaxed">
-                Soy un desarrollador full stack con más de 3 años de experiencia 
-                creando aplicaciones web modernas. Me especializo en React, TypeScript 
+                Soy un desarrollador full stack con más de 8 años de experiencia 
+                creando aplicaciones web modernas. Me especializo en React, TypeScript, Spring Boot 
                 y Node.js, siempre buscando las mejores prácticas y tecnologías emergentes.
               </p>
             </div>
