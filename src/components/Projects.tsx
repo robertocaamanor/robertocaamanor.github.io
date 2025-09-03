@@ -4,7 +4,7 @@ const Projects = () => {
       id: 1,
       title: "Archidrop",
       description: "Mantenedor en NodeJS que descomprime archivos desde cualquier lugar a Dropbox, usado para fines personales relativos al archivismo.",
-      image: "https://i.blogs.es/cd609b/zip-file/450_1000.jpg",
+      image: "/archidrop-image.png",
       technologies: ["Node.js"],
       github: "https://github.com/robertocaamanor/archidrop",
     },
@@ -42,7 +42,6 @@ const Projects = () => {
                   alt={project.title}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
               </div>
               
               <div className="p-6">
