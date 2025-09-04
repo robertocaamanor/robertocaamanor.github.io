@@ -285,6 +285,62 @@ html.dark .contact-info-card {
   background: linear-gradient(to bottom right, #3b82ff, #581c87) !important;
 }
 
+/* Experience section styling */
+html:not(.dark) .experience-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+  color: #1f2937 !important;
+}
+
+html.dark .experience-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+  color: #f3f4f6 !important;
+}
+
+html:not(.dark) .experience-card {
+  background: #ffffff !important;
+  border-color: #3b82f6 !important;
+  color: #1f2937 !important;
+}
+
+html.dark .experience-card {
+  background: #374151 !important;
+  border-color: #60a5fa !important;
+  color: #f3f4f6 !important;
+}
+
+/* Experience card text colors */
+html:not(.dark) .experience-card h3 {
+  color: #1f2937 !important;
+}
+
+html:not(.dark) .experience-card h4 {
+  color: #3b82f6 !important;
+}
+
+html:not(.dark) .experience-card p {
+  color: #4b5563 !important;
+}
+
+html:not(.dark) .experience-card .text-gray-600 {
+  color: #6b7280 !important;
+}
+
+html.dark .experience-card h3 {
+  color: #f9fafb !important;
+}
+
+html.dark .experience-card h4 {
+  color: #60a5fa !important;
+}
+
+html.dark .experience-card p {
+  color: #d1d5db !important;
+}
+
+html.dark .experience-card .text-gray-600 {
+  color: #9ca3af !important;
+}
+
 /* Footer */
 html:not(.dark) .footer-section {
   background-color: #1f2937 !important;
