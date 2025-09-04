@@ -10,22 +10,22 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="about-section py-20 transition-colors duration-200">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+          <h2 className="about-title text-4xl md:text-5xl font-bold mb-4">
             Acerca de mí
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="about-text text-xl max-w-2xl mx-auto">
             Desarrollador apasionado con experiencia en tecnologías modernas
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl p-8 text-white mb-8">
+            <div className="about-history-card rounded-2xl p-8 mb-8 transition-all duration-300">
               <h3 className="text-2xl font-bold mb-4">Mi Historia</h3>
-              <p className="text-blue-100 leading-relaxed">
+              <p className="about-history-text leading-relaxed">
                 Soy un desarrollador full stack con más de 8 años de experiencia 
                 creando aplicaciones web modernas. Me especializo en React, TypeScript, Spring Boot 
                 y Node.js, siempre buscando las mejores prácticas y tecnologías emergentes.
@@ -33,25 +33,25 @@ const About = () => {
             </div>
             
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-gray-50 p-6 rounded-xl text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">8+</div>
-                <div className="text-gray-600">Años de experiencia</div>
+              <div className="about-experience-card p-6 rounded-xl text-center transition-all duration-300">
+                <div className="about-experience-number text-3xl font-bold mb-2">8+</div>
+                <div className="about-text">Años de experiencia</div>
               </div>
             </div>
           </div>
 
           <div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-8">Habilidades Técnicas</h3>
+            <h3 className="about-title text-2xl font-bold mb-8">Habilidades Técnicas</h3>
             <div className="space-y-6">
               {skills.map((skill, index) => (
                 <div key={index}>
                   <div className="flex justify-between mb-2">
-                    <span className="text-gray-700 font-medium">{skill.name}</span>
-                    <span className="text-gray-500">{skill.level}%</span>
+                    <span className="about-text font-medium">{skill.name}</span>
+                    <span className="about-text">{skill.level}%</span>
                   </div>
-                  <div className="bg-gray-200 rounded-full h-3">
+                  <div className="skills-progress-bg rounded-full h-3 transition-colors duration-200">
                     <div 
-                      className="bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full transition-all duration-1000 ease-out"
+                      className="skills-progress-fill h-3 rounded-full transition-all duration-1000 ease-out"
                       style={{ width: `${skill.level}%` }}
                     ></div>
                   </div>

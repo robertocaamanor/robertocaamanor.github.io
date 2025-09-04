@@ -51,13 +51,13 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="contact-section py-20 transition-colors duration-200">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+          <h2 className="contact-title text-4xl md:text-5xl font-bold mb-4">
             Contacto
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="contact-text text-xl max-w-2xl mx-auto">
             ¿Tienes un proyecto en mente? ¡Hablemos!
           </p>
         </div>
@@ -65,7 +65,7 @@ const Contact = () => {
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
           <div>
-            <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+            <div className="contact-info-card rounded-2xl p-8 text-white">
               <h3 className="text-2xl font-bold mb-6">Información de Contacto</h3>
               
               <div className="space-y-6">
@@ -132,9 +132,9 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="contact-form space-y-6 p-6 rounded-xl border">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium contact-text mb-2">
                   Nombre completo
                 </label>
                 <input
@@ -144,13 +144,13 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  className="contact-input w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                   placeholder="Tu nombre"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium contact-text mb-2">
                   Email
                 </label>
                 <input
@@ -160,13 +160,13 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  className="contact-input w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                   placeholder="tu@email.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium contact-text mb-2">
                   Mensaje
                 </label>
                 <textarea
@@ -176,7 +176,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                  className="contact-input w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
                   placeholder="Cuéntame sobre tu proyecto..."
                 ></textarea>
               </div>
@@ -190,13 +190,13 @@ const Contact = () => {
               </button>
               
               {status === 'success' && (
-                <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                <div className="bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-300 px-4 py-3 rounded">
                   ¡Mensaje enviado correctamente! Te contactaré pronto.
                 </div>
               )}
               
               {status === 'error' && (
-                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                <div className="bg-red-100 dark:bg-red-900 border border-red-400 dark:border-red-700 text-red-700 dark:text-red-300 px-4 py-3 rounded">
                   Error al enviar el mensaje. Por favor, intenta de nuevo o contacta directamente a raristides.caamano@gmail.com
                 </div>
               )}
