@@ -8,13 +8,20 @@ const Projects = () => {
       technologies: ["Node.js"],
       github: "https://github.com/robertocaamanor/archidrop",
     },
+    {
+      id: 2,
+      title: "Nxtara Login",
+      description: "Colaboración en el sistema de autenticación para superadministradores y creación de blog, desarrollado con tecnologías modernas para una experiencia segura y escalable.",
+      image: "/nxtara-login.png",
+      technologies: ["Next.js", "Prisma ORM", "PostgreSQL", "JWT"],
+    },
   ] as Array<{
     id: number;
     title: string;
     description: string;
     image: string;
     technologies: string[];
-    github: string;
+    github?: string;
     demo?: string; // Propiedad opcional
   }>;
 
