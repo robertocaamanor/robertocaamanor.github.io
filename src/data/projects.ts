@@ -5,7 +5,7 @@ export interface Project {
   description: string;
   image: string;
   technologies: string[];
-  github?: string;
+  github?: string | { backend?: string; frontend?: string; };
   demo?: string;
 }
 
@@ -24,6 +24,10 @@ export const projects: Project[] = [
     description: "Aplicación web para el control de finanzas personales que permite a los usuarios gestionar sus ingresos, gastos y presupuestos de manera eficiente y organizada.",
     image: "/ordena-tu-plata.png",
     technologies: ["NestJS", "PostgreSQL", "Next.js", "Prisma ORM", "JWT"],
+    github: {
+      backend: "https://github.com/robertocaamanor/ordena-tu-plata-backend",
+      frontend: "https://github.com/robertocaamanor/ordena-tu-plata-frontend"
+    }
   }
   // {
   //   id: 3,
