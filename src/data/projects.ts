@@ -20,11 +20,18 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Nxtara Login",
-    description: "Colaboración en el sistema de autenticación para superadministradores y creación de blog, desarrollado con tecnologías modernas para una experiencia segura y escalable.",
-    image: "/nxtara-login.png",
-    technologies: ["Next.js", "Prisma ORM", "PostgreSQL", "JWT"],
+    title: "Ordena tu Plata", 
+    description: "Aplicación web para el control de finanzas personales que permite a los usuarios gestionar sus ingresos, gastos y presupuestos de manera eficiente y organizada.",
+    image: "/ordena-tu-plata.png",
+    technologies: ["NestJS", "PostgreSQL", "Next.js", "Prisma ORM", "JWT"],
   }
+  // {
+  //   id: 3,
+  //   title: "Nxtara Login",
+  //   description: "Colaboración en el sistema de autenticación para superadministradores y creación de blog, desarrollado con tecnologías modernas para una experiencia segura y escalable.",
+  //   image: "/nxtara-login.png",
+  //   technologies: ["Next.js", "Prisma ORM", "PostgreSQL", "JWT"],
+  // }
 ];
 
 // Textos de la sección de proyectos

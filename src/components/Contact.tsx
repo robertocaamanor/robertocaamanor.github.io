@@ -70,7 +70,7 @@ const Contact = () => {
               <h3 className="text-2xl font-bold mb-6">{contactContent.infoTitle}</h3>
               
               <div className="space-y-6">
-                <div className="flex items-center gap-4">
+                <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-4 hover:bg-white/10 p-2 rounded-lg transition-colors">
                   <div className="bg-white/20 p-3 rounded-lg">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -80,7 +80,7 @@ const Contact = () => {
                     <p className="font-semibold">{contactContent.contactMethods.email}</p>
                     <p className="text-blue-100">{personalInfo.email}</p>
                   </div>
-                </div>
+                </a>
 
                 <a href={personalInfo.whatsapp.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:bg-white/10 p-2 rounded-lg transition-colors">
                   <div className="bg-white/20 p-3 rounded-lg">
@@ -93,19 +93,6 @@ const Contact = () => {
                     <p className="text-blue-100">{personalInfo.whatsapp.displayNumber}</p>
                   </div>
                 </a>
-
-                <div className="flex items-center gap-4">
-                  <div className="bg-white/20 p-3 rounded-lg">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-semibold">{contactContent.contactMethods.location}</p>
-                    <p className="text-blue-100">{personalInfo.location}</p>
-                  </div>
-                </div>
               </div>
 
               <div className="mt-8 pt-8 border-t border-white/20">
