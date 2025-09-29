@@ -1,5 +1,7 @@
+import type { CVData, PDFConfig } from '../types';
+
 // Datos específicos para el CV
-export const cvData = {
+export const cvData: CVData = {
   // Información de encabezado
   header: {
     title: "Curriculum Vitae",
@@ -31,24 +33,83 @@ export const cvData = {
   certifications: [
     {
       id: 1,
-      name: "React Developer",
-      issuer: "Meta",
-      date: "2023",
-      description: "Certificación en desarrollo con React y ecosystem moderno"
+      name: "Curso de FastAPI",
+      issuer: "Platzi",
+      date: "Septiembre 2025",
+      credentialId: "bf74beed-b291-48cc-8b55-1ced4bda7642",
+      description: "Desarrollo de APIs modernas con FastAPI y Python"
     },
     {
       id: 2,
-      name: "Spring Boot Expert",
-      issuer: "Oracle",
-      date: "2022",
-      description: "Certificación en desarrollo backend con Spring Boot"
+      name: "Curso de Git y GitHub",
+      issuer: "Platzi",
+      date: "Septiembre 2025",
+      credentialId: "e2419ef7-da30-4669-9943-4e1f079251f1",
+      description: "Control de versiones y colaboración con Git y GitHub"
     },
     {
       id: 3,
-      name: "AWS Cloud Practitioner",
-      issuer: "Amazon Web Services",
-      date: "2021",
-      description: "Fundamentos de AWS Cloud Computing"
+      name: "Curso de React Avanzado",
+      issuer: "Platzi",
+      date: "Septiembre 2025",
+      credentialId: "61decb1e-eef7-4300-9cfe-5f148157f152",
+      description: "Técnicas avanzadas de desarrollo con React"
+    },
+    {
+      id: 4,
+      name: "Curso de Web Apps y Logic Apps en Azure",
+      issuer: "Platzi",
+      date: "Septiembre 2025",
+      credentialId: "bac2d2a4-c4f6-4a38-afaa-0d4d74ef7029",
+      description: "Desarrollo y despliegue de aplicaciones en Azure"
+    },
+    {
+      id: 5,
+      name: "Curso de Azure DevOps: Flujos de CI/CD",
+      issuer: "Platzi",
+      date: "Agosto 2025",
+      credentialId: "71eac6bd-bd62-4d8d-a467-1bf8fc1c5a32",
+      description: "Implementación de pipelines CI/CD con Azure DevOps"
+    },
+    {
+      id: 6,
+      name: "Curso de Backend con NestJS",
+      issuer: "Platzi",
+      date: "Agosto 2025",
+      credentialId: "88b4b15a-1cfd-472a-8358-639bbd4a0c54",
+      description: "Desarrollo de APIs robustas con NestJS y TypeScript"
+    },
+    {
+      id: 7,
+      name: "Curso de React.js con TypeScript",
+      issuer: "Platzi",
+      date: "Agosto 2025",
+      credentialId: "fc23b503-40cf-4641-af4d-39c15024fb60",
+      description: "Desarrollo frontend tipado con React y TypeScript"
+    },
+    {
+      id: 8,
+      name: "Curso de TypeScript",
+      issuer: "Platzi",
+      date: "Agosto 2025",
+      credentialId: "5b33b44c-a915-444f-b438-8743527ab7b6",
+      description: "Fundamentos y características avanzadas de TypeScript"
+    },
+    {
+      id: 9,
+      name: "Curso de React.js",
+      issuer: "Platzi",
+      date: "Julio 2025",
+      credentialId: "77d4672b-735d-4ffd-80c0-f0b9a07b59c9",
+      description: "Fundamentos de desarrollo con React.js"
+    },
+    {
+      id: 10,
+      name: "Curso de Java Spring",
+      issuer: "Platzi",
+      date: "Mayo 2025",
+      credentialId: "cc639603-55f7-4235-a3c1-5d7f06402e71",
+      description: "Desarrollo de aplicaciones enterprise con Spring Framework"
     }
   ],
   
@@ -112,7 +173,7 @@ export const cvData = {
 };
 
 // Configuración del PDF
-export const pdfConfig = {
+export const pdfConfig: PDFConfig = {
   format: 'A4',
   orientation: 'portrait',
   unit: 'mm',
