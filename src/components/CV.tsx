@@ -1,7 +1,5 @@
 import React, { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
-// @ts-ignore
-import html2pdf from 'html2pdf.js';
 import { 
   personalInfo, 
   experienceData, 
@@ -18,7 +16,6 @@ import {
   AcademicCapIcon,
   TrophyIcon,
   ChatBubbleBottomCenterTextIcon,
-  DocumentArrowDownIcon,
   PrinterIcon
 } from '@heroicons/react/24/outline';
 
@@ -96,44 +93,6 @@ const CV: React.FC = () => {
     `
   });
 
-  const handleDownloadPDF = async () => {
-    if (!componentRef.current) return;
-    
-    try {
-      // Configuración para el PDF
-      const opt = {
-        margin: [0.5, 0.5, 0.5, 0.5] as [number, number, number, number],
-        filename: `CV_${personalInfo.fullName.replace(/\s+/g, '_')}.pdf`,
-        image: { type: 'jpeg' as const, quality: 0.98 },
-        html2canvas: { 
-          scale: 2,
-          useCORS: true,
-          allowTaint: true,
-          backgroundColor: '#ffffff',
-          scrollX: 0,
-          scrollY: 0
-        },
-        jsPDF: { 
-          unit: 'in', 
-          format: 'a4', 
-          orientation: 'portrait' as const
-        },
-        pagebreak: { 
-          mode: ['avoid-all', 'css', 'legacy'],
-          before: '.print-break',
-          avoid: '.print-avoid-break'
-        }
-      };
-
-      // Generar y descargar el PDF
-      await html2pdf().set(opt).from(componentRef.current).save();
-    } catch (error) {
-      console.error('Error al generar PDF:', error);
-      // Fallback: usar el método de impresión
-      handlePrint();
-    }
-  };
-
   const formatPeriod = (period: string) => {
     return period.replace('·', '|').replace('actualidad', 'Presente');
   };
@@ -173,13 +132,6 @@ const CV: React.FC = () => {
               >
                 <PrinterIcon className="w-5 h-5" />
                 Imprimir
-              </button>
-              <button
-                onClick={handleDownloadPDF}
-                className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 hover:scale-105 transition-all duration-200 shadow-sm hover:shadow-md"
-              >
-                <DocumentArrowDownIcon className="w-5 h-5" />
-                Descargar PDF
               </button>
             </div>
           </div>
