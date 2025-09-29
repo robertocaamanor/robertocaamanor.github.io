@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
+import { personalInfo, navigationList } from '../data';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,41 +19,20 @@ const Header = () => {
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="header-title text-2xl font-bold">
-            Roberto Caamaño
+            {personalInfo.name}
           </div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('home')}
-              className="nav-link transition-colors"
-            >
-              Inicio
-            </button>
-            <button 
-              onClick={() => scrollToSection('about')}
-              className="nav-link transition-colors"
-            >
-              Acerca de
-            </button>
-            <button 
-              onClick={() => scrollToSection('experience')}
-              className="nav-link transition-colors"
-            >
-              Experiencia
-            </button>
-            <button 
-              onClick={() => scrollToSection('projects')}
-              className="nav-link transition-colors"
-            >
-              Proyectos
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="nav-link transition-colors"
-            >
-              Contacto
-            </button>
+            {navigationList.map((nav, index) => (
+              <button 
+                key={index}
+                onClick={() => scrollToSection(nav.id)}
+                className="nav-link transition-colors"
+              >
+                {nav.label}
+              </button>
+            ))}
             
             {/* Dark Mode Toggle */}
             <button
@@ -112,36 +92,15 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-4 py-4 border-t border-gray-200 dark:border-gray-700">
             <div className="flex flex-col space-y-2">
-              <button 
-                onClick={() => scrollToSection('home')}
-                className="text-left text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2"
-              >
-                Inicio
-              </button>
-              <button 
-                onClick={() => scrollToSection('about')}
-                className="text-left text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2"
-              >
-                Acerca de
-              </button>
-              <button 
-                onClick={() => scrollToSection('experience')}
-                className="text-left text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2"
-              >
-                Experiencia
-              </button>
-              <button 
-                onClick={() => scrollToSection('projects')}
-                className="text-left text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2"
-              >
-                Proyectos
-              </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="text-left text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2"
-              >
-                Contacto
-              </button>
+              {navigationList.map((nav, index) => (
+                <button 
+                  key={index}
+                  onClick={() => scrollToSection(nav.id)}
+                  className="text-left text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2"
+                >
+                  {nav.label}
+                </button>
+              ))}
             </div>
           </div>
         )}
