@@ -365,3 +365,74 @@ body {
   margin: 0;
   min-height: 100vh;
 }
+
+/* Animaciones para el CV */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease-out;
+}
+
+/* Animación de aparición gradual para elementos del CV */
+.cv-section {
+  animation: fade-in 0.8s ease-out;
+}
+
+.cv-item {
+  animation: slide-in-left 0.6s ease-out;
+}
+
+/* Hover effects mejorados */
+.skill-item:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+.experience-item:hover {
+  transform: translateX(5px);
+  transition: transform 0.3s ease;
+}
+
+/* Progreso de barras de idiomas con animación */
+.language-progress {
+  transition: width 1s ease-in-out 0.5s;
+}

@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { personalInfo, navigationList } from '../data';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, toggleDarkMode } = useTheme();
+  const location = useLocation();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -24,15 +26,32 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navigationList.map((nav, index) => (
-              <button 
-                key={index}
-                onClick={() => scrollToSection(nav.id)}
-                className="nav-link transition-colors"
+            {location.pathname === '/' ? (
+              <>
+                {navigationList.map((nav, index) => (
+                  <button 
+                    key={index}
+                    onClick={() => scrollToSection(nav.id)}
+                    className="nav-link transition-colors"
+                  >
+                    {nav.label}
+                  </button>
+                ))}
+                <Link
+                  to="/cv"
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                >
+                  Ver CV
+                </Link>
+              </>
+            ) : (
+              <Link
+                to="/"
+                className="nav-link transition-colors flex items-center gap-2"
               >
-                {nav.label}
-              </button>
-            ))}
+                ← Volver al Portafolio
+              </Link>
+            )}
             
             {/* Dark Mode Toggle */}
             <button
@@ -92,15 +111,34 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-4 py-4 border-t border-gray-200 dark:border-gray-700">
             <div className="flex flex-col space-y-2">
-              {navigationList.map((nav, index) => (
-                <button 
-                  key={index}
-                  onClick={() => scrollToSection(nav.id)}
+              {location.pathname === '/' ? (
+                <>
+                  {navigationList.map((nav, index) => (
+                    <button 
+                      key={index}
+                      onClick={() => scrollToSection(nav.id)}
+                      className="text-left text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2"
+                    >
+                      {nav.label}
+                    </button>
+                  ))}
+                  <Link
+                    to="/cv"
+                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium text-center"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Ver CV
+                  </Link>
+                </>
+              ) : (
+                <Link
+                  to="/"
                   className="text-left text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
                 >
-                  {nav.label}
-                </button>
-              ))}
+                  ← Volver al Portafolio
+                </Link>
+              )}
             </div>
           </div>
         )}

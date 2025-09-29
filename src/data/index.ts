@@ -7,3 +7,4 @@ export * from './projects';
 export * from './contact';
 export * from './experience';
 export * from './content';
+export * from './cv';
