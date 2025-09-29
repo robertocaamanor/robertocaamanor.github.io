@@ -11,19 +11,19 @@ export const cvData = {
   education: [
     {
       id: 1,
-      institution: "INACAP",
-      degree: "Ingeniería en Informática",
-      period: "2014 - 2017",
-      location: "Concepción, Chile",
-      description: "Título Técnico de Nivel Superior en Informática"
+      institution: "Instituto Profesional Virginio Gómez",
+      degree: "Técnico de Nivel Superior en Computación e Informática",
+      period: "2011 - 2014",
+      location: "Chile",
+      description: "Especialización en TI, Programación y Hardware. Programación, Base de datos, Desarrollo de sistemas, Especificación de Requerimientos, Mantención de Hardware"
     },
     {
       id: 2,
-      institution: "Colegio Andrés Bello",
-      degree: "Enseñanza Media",
-      period: "2010 - 2013",
-      location: "Chiguayante, Chile",
-      description: "Educación Secundaria Completa"
+      institution: "Instituto Conosur",
+      degree: "Licenciatura en Armado y Mantención de PC e Inglés",
+      period: "2015 - 2017",
+      location: "Chile",
+      description: "Certificación Microsoft. Curso de Armado y Mantención de PC con Certificación Microsoft e Inglés Medio"
     }
   ],
   

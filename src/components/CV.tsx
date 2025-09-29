@@ -29,7 +29,7 @@ const CV: React.FC = () => {
     pageStyle: `
       @page {
         size: A4;
-        margin: 0.5in;
+        margin: 0.4in;
       }
       
       @media print {
@@ -37,18 +37,41 @@ const CV: React.FC = () => {
           -webkit-print-color-adjust: exact;
           color-adjust: exact;
           print-color-adjust: exact;
+          font-size: 12px !important;
+          line-height: 1.4 !important;
         }
         
         .print-break {
-          page-break-before: always;
+          page-break-before: always !important;
+          margin-top: 0 !important;
+          padding-top: 0 !important;
         }
         
         .print-avoid-break {
-          page-break-inside: avoid;
+          page-break-inside: avoid !important;
+          break-inside: avoid !important;
         }
         
         .print-hide {
           display: none !important;
+        }
+        
+        .experience-item {
+          margin-bottom: 12px !important;
+          padding: 8px 0 !important;
+        }
+        
+        .section-spacing {
+          margin-bottom: 16px !important;
+        }
+        
+        h3 {
+          margin-bottom: 8px !important;
+          margin-top: 16px !important;
+        }
+        
+        .cv-content {
+          font-size: 11px !important;
         }
       }
     `
@@ -191,38 +214,38 @@ const CV: React.FC = () => {
             </div>
           </section>
 
-          {/* Experiencia Laboral */}
-          <section className="mb-8">
+          {/* Experiencia Laboral - Primera Parte */}
+          <section className="mb-8 section-spacing">
             <h3 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-blue-600 pb-2">
               Experiencia Laboral
             </h3>
-            <div className="space-y-6">
-              {experienceData.slice(0, 8).map((exp, index) => (
-                <div key={exp.id} className={`${index > 3 ? 'print-break' : ''} print-avoid-break cv-item`}>
+            <div className="space-y-4">
+              {experienceData.slice(0, 4).map((exp) => (
+                <div key={exp.id} className="print-avoid-break cv-item">
                   <div className="border-l-4 border-blue-600 pl-4 experience-item hover:border-blue-700 transition-colors">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                      <div>
-                        <h4 className="text-lg font-semibold text-gray-900">{exp.position}</h4>
-                        <div className="flex items-center gap-2 text-blue-700 font-medium">
+                      <div className="flex-1">
+                        <h4 className="text-base font-semibold text-gray-900">{exp.position}</h4>
+                        <div className="flex items-center gap-2 text-blue-700 font-medium text-sm">
                           <BuildingOfficeIcon className="w-4 h-4" />
                           <span>{exp.company}</span>
                         </div>
                       </div>
-                      <div className="text-sm text-gray-600 sm:text-right">
-                        <div className="flex items-center gap-1">
+                      <div className="text-sm text-gray-600 sm:text-right mt-1 sm:mt-0">
+                        <div className="flex items-center gap-1 sm:justify-end">
                           <CalendarIcon className="w-4 h-4" />
-                          <span>{formatPeriod(exp.period)}</span>
+                          <span className="text-xs">{formatPeriod(exp.period)}</span>
                         </div>
                         <div className="text-xs">{exp.location}</div>
                       </div>
                     </div>
                     
-                    <p className="text-gray-700 text-sm mb-3 leading-relaxed">
-                      {exp.description}
+                    <p className="text-gray-700 text-xs mb-2 leading-relaxed cv-content">
+                      {exp.description.length > 150 ? exp.description.substring(0, 150) + '...' : exp.description}
                     </p>
                     
                     <div className="flex flex-wrap gap-1">
-                      {exp.skills.slice(0, 6).map((skill, skillIndex) => (
+                      {exp.skills.slice(0, 5).map((skill, skillIndex) => (
                         <span 
                           key={skillIndex}
                           className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs hover:bg-gray-200 transition-colors"
@@ -230,9 +253,9 @@ const CV: React.FC = () => {
                           {skill}
                         </span>
                       ))}
-                      {exp.skills.length > 6 && (
+                      {exp.skills.length > 5 && (
                         <span className="text-xs text-gray-500">
-                          +{exp.skills.length - 6} más
+                          +{exp.skills.length - 5}
                         </span>
                       )}
                     </div>
@@ -242,28 +265,70 @@ const CV: React.FC = () => {
             </div>
           </section>
 
-          {/* Segunda página */}
+          {/* Experiencia Laboral - Segunda Parte */}
+          <section className="mb-8 section-spacing print-break">
+            <h3 className="text-xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">
+              Experiencia Laboral (Continuación)
+            </h3>
+            <div className="space-y-3">
+              {experienceData.slice(4, 10).map((exp) => (
+                <div key={exp.id} className="print-avoid-break">
+                  <div className="border-l-4 border-blue-600 pl-4 py-2">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1">
+                      <div className="flex-1">
+                        <h4 className="text-sm font-semibold text-gray-900">{exp.position}</h4>
+                        <div className="flex items-center gap-2 text-blue-700 font-medium text-sm">
+                          <BuildingOfficeIcon className="w-3 h-3" />
+                          <span className="text-xs">{exp.company}</span>
+                        </div>
+                      </div>
+                      <div className="text-xs text-gray-600 sm:text-right">
+                        <div>{formatPeriod(exp.period)}</div>
+                      </div>
+                    </div>
+                    
+                    <p className="text-gray-700 text-xs mb-2 leading-tight">
+                      {exp.description.length > 120 ? exp.description.substring(0, 120) + '...' : exp.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-1">
+                      {exp.skills.slice(0, 4).map((skill, skillIndex) => (
+                        <span 
+                          key={skillIndex}
+                          className="bg-gray-100 text-gray-700 px-1 py-0.5 rounded text-xs"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Tercera página */}
           <div className="print-break">
             {/* Educación */}
-            <section className="mb-8 print-avoid-break">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">
+            <section className="mb-6 print-avoid-break section-spacing">
+              <h3 className="text-xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">
                 Educación
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {cvData.education.map((edu) => (
-                  <div key={edu.id} className="border-l-4 border-green-600 pl-4">
+                  <div key={edu.id} className="border-l-4 border-green-600 pl-4 print-avoid-break">
                     <div className="flex justify-between items-start">
-                      <div>
-                        <h4 className="font-semibold text-gray-900">{edu.degree}</h4>
-                        <div className="flex items-center gap-2 text-green-700">
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-gray-900 text-sm">{edu.degree}</h4>
+                        <div className="flex items-center gap-2 text-green-700 text-sm">
                           <AcademicCapIcon className="w-4 h-4" />
                           <span>{edu.institution}</span>
                         </div>
-                        <p className="text-sm text-gray-600">{edu.description}</p>
+                        <p className="text-xs text-gray-600 cv-content leading-tight">{edu.description}</p>
                       </div>
-                      <div className="text-sm text-gray-600 text-right">
+                      <div className="text-xs text-gray-600 text-right ml-2">
                         <div className="flex items-center gap-1">
-                          <CalendarIcon className="w-4 h-4" />
+                          <CalendarIcon className="w-3 h-3" />
                           <span>{edu.period}</span>
                         </div>
                         <div className="text-xs">{edu.location}</div>
@@ -275,20 +340,20 @@ const CV: React.FC = () => {
             </section>
 
             {/* Certificaciones */}
-            <section className="mb-8 print-avoid-break">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">
+            <section className="mb-6 print-avoid-break section-spacing">
+              <h3 className="text-xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">
                 Certificaciones
               </h3>
-              <div className="grid gap-4">
+              <div className="grid gap-2">
                 {cvData.certifications.map((cert) => (
-                  <div key={cert.id} className="bg-gray-50 p-4 rounded-lg">
+                  <div key={cert.id} className="bg-gray-50 p-3 rounded-lg print-avoid-break">
                     <div className="flex justify-between items-start">
-                      <div>
-                        <h4 className="font-semibold text-gray-900">{cert.name}</h4>
-                        <p className="text-blue-600 font-medium">{cert.issuer}</p>
-                        <p className="text-sm text-gray-600">{cert.description}</p>
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-gray-900 text-sm">{cert.name}</h4>
+                        <p className="text-blue-600 font-medium text-sm">{cert.issuer}</p>
+                        <p className="text-xs text-gray-600 cv-content">{cert.description}</p>
                       </div>
-                      <span className="text-sm text-gray-500">{cert.date}</span>
+                      <span className="text-xs text-gray-500 ml-2">{cert.date}</span>
                     </div>
                   </div>
                 ))}
@@ -296,22 +361,22 @@ const CV: React.FC = () => {
             </section>
 
             {/* Logros Destacados */}
-            <section className="mb-8 print-avoid-break">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">
+            <section className="mb-6 print-avoid-break section-spacing">
+              <h3 className="text-xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">
                 Logros Destacados
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-2">
                 {cvData.achievements.map((achievement, index) => (
-                  <div key={index} className="border-l-4 border-yellow-500 pl-4">
+                  <div key={index} className="border-l-4 border-yellow-500 pl-4 print-avoid-break">
                     <div className="flex justify-between items-start">
-                      <div>
+                      <div className="flex-1">
                         <div className="flex items-center gap-2">
                           <TrophyIcon className="w-4 h-4 text-yellow-600" />
-                          <h4 className="font-semibold text-gray-900">{achievement.title}</h4>
+                          <h4 className="font-semibold text-gray-900 text-sm">{achievement.title}</h4>
                         </div>
-                        <p className="text-sm text-gray-600 mt-1">{achievement.description}</p>
+                        <p className="text-xs text-gray-600 mt-1 cv-content leading-tight">{achievement.description}</p>
                       </div>
-                      <span className="text-sm text-gray-500">{achievement.year}</span>
+                      <span className="text-xs text-gray-500 ml-2">{achievement.year}</span>
                     </div>
                   </div>
                 ))}
@@ -319,22 +384,22 @@ const CV: React.FC = () => {
             </section>
 
             {/* Grid de Idiomas y Habilidades Blandas */}
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
               {/* Idiomas */}
               <section className="print-avoid-break">
-                <h3 className="text-xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">
+                <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-2">
                   Idiomas
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-2">
                   {cvData.languages.map((lang, index) => (
-                    <div key={index}>
+                    <div key={index} className="print-avoid-break">
                       <div className="flex justify-between items-center mb-1">
-                        <span className="font-medium text-gray-900">{lang.name}</span>
-                        <span className="text-sm text-gray-600">{lang.level}</span>
+                        <span className="font-medium text-gray-900 text-sm">{lang.name}</span>
+                        <span className="text-xs text-gray-600">{lang.level}</span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="w-full bg-gray-200 rounded-full h-1.5">
                         <div 
-                          className="bg-blue-600 h-2 rounded-full language-progress"
+                          className="bg-blue-600 h-1.5 rounded-full language-progress"
                           style={{ width: `${lang.percentage}%` }}
                         />
                       </div>
@@ -345,14 +410,14 @@ const CV: React.FC = () => {
 
               {/* Habilidades Blandas */}
               <section className="print-avoid-break">
-                <h3 className="text-xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">
+                <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-2">
                   Habilidades Blandas
                 </h3>
-                <div className="grid grid-cols-1 gap-2">
+                <div className="grid grid-cols-1 gap-1">
                   {cvData.softSkills.map((skill, index) => (
                     <div key={index} className="flex items-center gap-2">
-                      <ChatBubbleBottomCenterTextIcon className="w-4 h-4 text-blue-600" />
-                      <span className="text-sm text-gray-700">{skill}</span>
+                      <ChatBubbleBottomCenterTextIcon className="w-3 h-3 text-blue-600" />
+                      <span className="text-xs text-gray-700 cv-content">{skill}</span>
                     </div>
                   ))}
                 </div>
