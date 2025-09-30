@@ -152,14 +152,14 @@ export const cvData: CVData = {
       year: "2018"
     },
     {
-      title: "Migración exitosa Mi Banco",
-      description: "Lideré la migración de componentes críticos de Mi Pago a Mi Banco en Banco de Chile",
-      year: "2024"
-    },
-    {
       title: "Implementación Microservicios SAG",
       description: "Desarrollo de arquitectura de microservicios para transformación digital en SAG",
       year: "2021"
+    },
+    {
+      title: "Implementación de e-commerce y blog en Nxtara",
+      description: "Desarrollo completo de plataforma e-commerce y blog corporativo utilizando React, Spring Boot, NextJS y PostgreSQL",
+      year: "2025"
     }
   ],
   

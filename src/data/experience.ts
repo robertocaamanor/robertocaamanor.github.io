@@ -22,18 +22,9 @@ export const experienceData: ExperienceItem[] = [
     description: "Desarrollo de nuevas funcionalidades en el sitio web de la tienda de joyerías Timantti, empleando React, Spring Boot, PostgreSQL y GIT. Implementación de blog con publicación de artículos, resolución de QAs e implementación de librerías NPM. Implementación de Google Analytics y Google Tag Manager en la página web oficial de Nxtara para medición de métricas del portal.",
     skills: ["React", "Next.js", "TypeScript", "Spring Boot", "PostgreSQL", "Git", "Microsoft Azure", "Google Tag Manager", "Google Analytics"]
   },
+
   {
     id: 2,
-    company: "TVenserio.com",
-    position: "CEO y Fundador",
-    period: "may. 2018 - actualidad · 7 años 5 meses",
-    location: "Chile",
-    type: "Profesional independiente",
-    description: "CEO, desarrollador y fundador del sitio web especializado en industria televisiva, TVenserio.com",
-    skills: ["Emprendimiento", "Desarrollo Web", "Gestión de Contenidos", "SEO"]
-  },
-  {
-    id: 3,
     company: "Banco de Chile",
     position: "Programador full stack",
     period: "jul. 2024 - nov. 2024 · 5 meses",
@@ -43,7 +34,7 @@ export const experienceData: ExperienceItem[] = [
     skills: ["Git", "Jenkins", "React Native", "Spring Boot", "Jest", "Sonarqube"]
   },
   {
-    id: 4,
+    id: 3,
     company: "BBR",
     position: "Desarrollador full stack",
     period: "ene. 2022 - jul. 2024 · 2 años 7 meses",
@@ -53,7 +44,7 @@ export const experienceData: ExperienceItem[] = [
     skills: ["JSON", "VueJS", "Google Cloud", "Java", "Spring Boot", "Oracle", "PostgreSQL"]
   },
   {
-    id: 5,
+    id: 4,
     company: "Servicio Agrícola y Ganadero",
     position: "Desarrollador FullStack",
     period: "nov. 2019 - ene. 2022 · 2 años 3 meses",
@@ -63,7 +54,7 @@ export const experienceData: ExperienceItem[] = [
     skills: ["Node.js", "Git", "JSON", "Java", "Docker", "Spring Boot", "SQL Server", "MongoDB"]
   },
   {
-    id: 6,
+    id: 5,
     company: "Indra",
     position: "Desarrollador Spring Boot + Angular 7",
     period: "ago. 2019 - oct. 2019 · 3 meses",
@@ -73,7 +64,7 @@ export const experienceData: ExperienceItem[] = [
     skills: ["Git", "JSON", "Java", "Spring Boot", "Angular"]
   },
   {
-    id: 7,
+    id: 6,
     company: "Ingenia Global",
     position: "Desarrollador PHP",
     period: "nov. 2018 - may. 2019 · 7 meses",
@@ -83,7 +74,7 @@ export const experienceData: ExperienceItem[] = [
     skills: ["Git", "PHP", "WordPress", "jQuery", "CakePHP", "MySQL"]
   },
   {
-    id: 8,
+    id: 7,
     company: "ABENIS",
     position: "Desarrollador PHP / AngularJS",
     period: "oct. 2018 - nov. 2018 · 2 meses",
@@ -93,7 +84,7 @@ export const experienceData: ExperienceItem[] = [
     skills: ["PHP", "AngularJS", "Symfony", "Material Design", "Mercurial", "MySQL", "SQL Server", "MongoDB"]
   },
   {
-    id: 9,
+    id: 8,
     company: "HS Soluciones",
     position: "Desarrollador PHP / Laravel 5.6 / VueJS",
     period: "jun. 2018 - sept. 2018 · 4 meses",
@@ -103,7 +94,7 @@ export const experienceData: ExperienceItem[] = [
     skills: ["Git", "VueJS", "Laravel", "NPM", "Bitbucket", "MySQL"]
   },
   {
-    id: 10,
+    id: 9,
     company: "Nectia",
     position: "Desarrollador y Soporte Front-end",
     period: "mar. 2018 - jun. 2018 · 4 meses",
@@ -113,7 +104,7 @@ export const experienceData: ExperienceItem[] = [
     skills: ["Git", "AngularJS", "jQuery", "C#", "SVN", "API"]
   },
   {
-    id: 11,
+    id: 10,
     company: "Apiux Tecnología",
     position: "Programador PHP Junior",
     period: "ago. 2017 - dic. 2017 · 5 meses",
@@ -123,7 +114,7 @@ export const experienceData: ExperienceItem[] = [
     skills: ["Laravel", "PHP", "jQuery", "Bootstrap", "MySQL", "SVN"]
   },
   {
-    id: 12,
+    id: 11,
     company: "R2DA",
     position: "PHP Developer",
     period: "jun. 2017 - jul. 2017 · 2 meses",
@@ -133,7 +124,7 @@ export const experienceData: ExperienceItem[] = [
     skills: ["Git", "AngularJS", "PHP", "MySQL", "NPM", "API REST"]
   },
   {
-    id: 13,
+    id: 12,
     company: "Clubautomotriz.com",
     position: "Desarrollador Wordpress",
     period: "nov. 2016 - ene. 2017 · 3 meses",
@@ -143,7 +134,7 @@ export const experienceData: ExperienceItem[] = [
     skills: ["WordPress", "ClassiPress", "PHP", "Desarrollo Web"]
   },
   {
-    id: 14,
+    id: 13,
     company: "XHOST",
     position: "Programador PHP",
     period: "may. 2016 - jul. 2016 · 3 meses",
@@ -153,7 +144,7 @@ export const experienceData: ExperienceItem[] = [
     skills: ["PHP", "jQuery", "CSS3", "SQL Server", "Bootstrap"]
   },
   {
-    id: 15,
+    id: 14,
     company: "Colegio Andrés Bello",
     position: "Programador en Práctica",
     period: "feb. 2015 - mar. 2015 · 2 meses",

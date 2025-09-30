@@ -12,6 +12,22 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
+    title: "TVenserio.com",
+    description: "Sitio web especializado en industria televisiva, música, cultura y espectáculo. Plataforma de contenidos con más de 50k usuarios mensuales, desarrollada con enfoque en SEO y experiencia de usuario.",
+    image: "/tvenserio.png",
+    technologies: ["WordPress", "SEO", "Adobe InDesign", "Google Analytics", "Elementor"],
+    demo: "https://tvenserio.com",
+  },
+  {
+    id: 2,
+    title: "Caamarchivos",
+    description: "Canal y plataforma de televisión del recuerdo que preserva y comparte contenido audiovisual histórico. Incluye edición de video profesional y gestión de redes sociales con diseños creativos.",
+    image: "/caamarchivos.png",
+    technologies: ["Adobe Premiere", "Adobe Photoshop", "Adobe Illustrator", "Edición de Video", "Gestión de Redes Sociales"],
+    demo: "https://www.instagram.com/caamarchivos/",
+  },
+  {
+    id: 3,
     title: "Archidrop",
     description: "Mantenedor en NodeJS que descomprime archivos desde cualquier lugar a Dropbox, usado para fines personales relativos al archivismo.",
     image: "/archidrop-image.png",
@@ -19,7 +35,7 @@ export const projects: Project[] = [
     github: "https://github.com/robertocaamanor/archidrop",
   },
   {
-    id: 2,
+    id: 4,
     title: "Ordena tu Plata", 
     description: "Aplicación web para el control de finanzas personales que permite a los usuarios gestionar sus ingresos, gastos y presupuestos de manera eficiente y organizada.",
     image: "/ordena-tu-plata.png",
