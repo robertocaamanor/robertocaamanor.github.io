@@ -29,7 +29,7 @@ export const projects: Project[] = [
   {
     id: 3,
     title: "Archidrop",
-    description: "Mantenedor en NodeJS que descomprime archivos desde cualquier lugar a Dropbox, usado para fines personales relativos al archivismo.",
+    description: "Programa de escritorio creado con NodeJS, Electron y Typescript que descomprime archivos desde cualquier lugar a Dropbox, usado para fines personales relativos al archivismo.",
     image: "/archidrop-desktop-image.png",
     technologies: ["Node.js", "Typescript", "Electron", "TailwindCSS"],
     github: "https://github.com/robertocaamanor/archidrop-desktop",
