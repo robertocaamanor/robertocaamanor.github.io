@@ -1,12 +1,12 @@
 # Portfolio Roberto Caamaño - robertocaamanor.github.io
 
-Portafolio web personal desarrollado con React, TypeScript y TailwindCSS. Incluye un CV dinámico interactivo con capacidad de descarga en PDF.
+Portafolio web personal desarrollado con React, TypeScript y TailwindCSS. Incluye un CV dinámico e interactivo optimizado para impresión. Actualmente el proyecto NO incorpora generación automática de PDF; para obtener una versión en PDF usa el diálogo de impresión del navegador (Guardar como PDF).
 
 ## 🚀 Características
 
 - **Portafolio Completo**: Información personal, experiencia, proyectos y contacto
 - **CV Dinámico**: Currículum Vitae interactivo con diseño profesional
-- **Descarga PDF**: Genera y descarga el CV en formato PDF con un solo clic
+- **Descarga PDF**: Actualmente no existe una generación automática con un solo clic. Para obtener el CV en PDF, abre la ruta `/cv` en el navegador y usa la opción Imprimir/Guardar como PDF del navegador. El CV incluye estilos optimizados para A4 y paginación para mejorar el resultado al imprimir.
 - **Responsive Design**: Optimizado para desktop, tablet y móvil
 - **Dark Mode**: Tema oscuro/claro con persistencia
 - **React Router**: Navegación entre portafolio y CV
@@ -17,7 +17,9 @@ Portafolio web personal desarrollado con React, TypeScript y TailwindCSS. Incluy
 - **Frontend**: React 19.1.1, TypeScript
 - **Styling**: TailwindCSS 4.1.12
 - **Routing**: React Router DOM
-- **PDF Generation**: react-to-print, html2canvas, jspdf
+- **PDF Generation**: Actualmente este proyecto NO incluye generación automática (server-side ni client-side) de PDF. El CV está pensado para imprimirse o guardarse como PDF desde el navegador.
+  
+Si deseas añadir generación automática, algunas opciones comunes son: `react-to-print` (impresión de componentes), `html2canvas` + `jspdf` (captura y generación cliente) o renderizado servidor con Puppeteer/wkhtmltopdf.
 - **Icons**: Heroicons
 - **Email**: EmailJS
 - **Build Tool**: Vite
@@ -38,8 +40,23 @@ Portafolio web personal desarrollado con React, TypeScript y TailwindCSS. Incluy
 - **Impresión Optimizada**: CSS específico para impresión
 - **Formato A4**: Diseñado para papel estándar
 - **Paginación Inteligente**: Evita cortes de contenido
-- **PDF Directo**: Descarga inmediata sin configuración
+- **PDF Directo**: (No disponible) La descarga directa a PDF no está implementada.
 - **Responsive**: Se adapta a diferentes tamaños de pantalla
+
+### Cómo descargar el CV en PDF (instrucciones rápidas)
+
+1. Ejecuta la app con `npm run dev` y abre `http://localhost:5173/cv` (ruta `/cv`).
+2. Abre el diálogo de impresión del navegador (Ctrl+P / Cmd+P).
+3. Selecciona "Guardar como PDF" o una impresora PDF disponible.
+4. Ajusta márgenes y escala si es necesario y guarda.
+
+### Opciones para añadir generación automática de PDF
+
+- Cliente: `react-to-print` — sencillo, imprime un componente React manteniendo estilos CSS.
+- Cliente: `html2canvas` + `jspdf` — captura la página y genera un PDF; requiere ajustes para paginación.
+- Servidor: Headless Chrome (Puppeteer) o `wkhtmltopdf` — renderiza la ruta `/cv` a PDF en el backend y ofrece descarga directa.
+
+Si quieres, puedo implementar la opción de generación automática (por ejemplo, un botón "Descargar PDF" usando `react-to-print` o `html2canvas` + `jspdf`). Dime cuál prefieres y lo hago.
 
 ## 🎯 Navegación
 
