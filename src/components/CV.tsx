@@ -213,8 +213,7 @@ const CV: React.FC = () => {
             </h3>
             <p className="text-gray-700 leading-relaxed">
               {personalInfo.description.about} Con {personalInfo.yearsExperience} años de experiencia 
-              en el desarrollo de software, he liderado proyectos de transformación digital y 
-              he sido fundador de mi propia startup tecnológica.
+              en el desarrollo de software, he formnado parte de varios proyectos de transformación digital.
             </p>
           </section>
 
