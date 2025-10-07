@@ -462,8 +462,7 @@ const CV: React.FC = () => {
                 <strong>Referencias profesionales disponibles bajo solicitud</strong>
               </p>
               <p>
-                Este documento fue generado automáticamente el {new Date().toLocaleDateString('es-ES')} 
-                desde el portafolio web de {personalInfo.fullName}
+                Este documento fue generado automáticamente el {new Date().toLocaleDateString('es-ES')} desde el portafolio web de {personalInfo.fullName}
               </p>
               <p className="text-xs text-gray-500 mt-2">
                 Versión digital disponible en: robertocaamanor.github.io
