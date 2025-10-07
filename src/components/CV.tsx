@@ -133,6 +133,18 @@ const CV: React.FC = () => {
                 <PrinterIcon className="w-5 h-5" />
                 Imprimir
               </button>
+              {/* Botón de descarga del PDF del CV en /public */}
+              <a
+                href="/Curriculum vitae - Roberto Caamaño Riquelme.pdf"
+                download={`CV_${personalInfo.fullName.replace(/\s+/g, '_')}.pdf`}
+                className="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 hover:scale-105 transition-all duration-200 shadow-sm hover:shadow-md"
+                aria-label="Descargar CV en PDF"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M3 14a1 1 0 011-1h3v2H5v1a1 1 0 01-1 1H3v-3zm6-9a1 1 0 00-1 1v5H6l4 4 4-4h-2V6a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+                Descargar CV
+              </a>
             </div>
           </div>
         </div>      {/* CV Content */}
@@ -201,8 +213,7 @@ const CV: React.FC = () => {
             </h3>
             <p className="text-gray-700 leading-relaxed">
               {personalInfo.description.about} Con {personalInfo.yearsExperience} años de experiencia 
-              en el desarrollo de software, he liderado proyectos de transformación digital y 
-              he sido fundador de mi propia startup tecnológica.
+              en el desarrollo de software, he formnado parte de varios proyectos de transformación digital.
             </p>
           </section>
 
