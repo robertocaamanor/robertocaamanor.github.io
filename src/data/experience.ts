@@ -16,7 +16,7 @@ export const experienceData: ExperienceItem[] = [
     id: 1,
     company: "Nxtara",
     position: "Analista Desarrollador",
-    period: "may. 2025 - actualidad · 5 meses",
+    period: "may. 2025 - actualidad · 6 meses",
     location: "Gran Santiago, Región Metropolitana de Santiago, Chile · Presencial",
     type: "Jornada completa",
     description: "Desarrollo de nuevas funcionalidades en el sitio web de la tienda de joyerías Timantti, empleando React, Spring Boot, PostgreSQL y GIT. Implementación de blog con publicación de artículos, resolución de QAs e implementación de librerías NPM. Implementación de Google Analytics y Google Tag Manager en la página web oficial de Nxtara para medición de métricas del portal.",

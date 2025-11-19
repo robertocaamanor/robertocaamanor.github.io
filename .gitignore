@@ -14,6 +14,23 @@ dist-ssr
 
 # Environment variables
 .env
+.env.local
+.env.production
+
+# AWS temporary files
+bucket-policy.json
+website-config.json
+cloudfront-config.json
+dns-records.json
+
+# AWS CloudFormation templates (if any)
+*.yaml
+*.yml
+!.github/workflows/*.yml
+
+# AWS credentials and config (safety measure)
+.aws/
+aws-config/
 
 # Editor directories and files
 .vscode/*
@@ -25,3 +42,25 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# OS generated files
+Thumbs.db
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Deployment and build artifacts
+build/
+*.tgz
+*.tar.gz
+
+# Backup files
+*.backup
+*.bak
+*.tmp
+
+# Log files
+*.log.*

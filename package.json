@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:aws": "tsc -b && vite build --mode production",
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
-    "build-and-deploy": "npm run build && npm run deploy"
+    "deploy:aws": "aws s3 sync dist/ s3://robertocaamano.com --delete && aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_ID --paths '/*'",
+    "build-and-deploy": "npm run build && npm run deploy",
+    "build-and-deploy:aws": "npm run build:aws && npm run deploy:aws"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
