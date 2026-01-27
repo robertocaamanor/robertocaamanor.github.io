@@ -5,6 +5,7 @@ import { ExperienceModule } from './modules/experience/experience.module';
 import { ProjectModule } from './modules/project/project.module';
 import { CertificationModule } from './modules/certification/certification.module';
 import { EducationModule } from './modules/education/education.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { EducationModule } from './modules/education/education.module';
         rejectUnauthorized: false,
       },
     }),
+    AuthModule,
     ExperienceModule,
     ProjectModule,
     CertificationModule,
