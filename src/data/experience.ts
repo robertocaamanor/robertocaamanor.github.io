@@ -4,6 +4,8 @@ export interface ExperienceItem {
   company: string;
   position: string;
   period: string;
+  startDate?: string; // Formato: 'YYYY-MM'
+  endDate?: string | null; // null significa 'actualidad'
   location: string;
   type: string;
   description: string;
@@ -11,12 +13,53 @@ export interface ExperienceItem {
   logo?: string;
 }
 
+// Función helper para calcular la duración entre dos fechas
+export const calculateDuration = (startDate: string, endDate: string | null = null): string => {
+  const start = new Date(startDate + '-01');
+  const end = endDate ? new Date(endDate + '-01') : new Date();
+  
+  const months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+  const years = Math.floor(months / 12);
+  const remainingMonths = months % 12;
+  
+  if (years > 0 && remainingMonths > 0) {
+    return `${years} ${years === 1 ? 'año' : 'años'} ${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'}`;
+  } else if (years > 0) {
+    return `${years} ${years === 1 ? 'año' : 'años'}`;
+  } else {
+    return `${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'}`;
+  }
+};
+
+// Función para formatear el período completo
+export const formatPeriod = (startDate: string, endDate: string | null = null): string => {
+  const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sept', 'oct', 'nov', 'dic'];
+  
+  const start = new Date(startDate + '-01');
+  const startMonth = months[start.getMonth()];
+  const startYear = start.getFullYear();
+  
+  const duration = calculateDuration(startDate, endDate);
+  
+  if (endDate === null) {
+    return `${startMonth}. ${startYear} - actualidad · ${duration}`;
+  }
+  
+  const end = new Date(endDate + '-01');
+  const endMonth = months[end.getMonth()];
+  const endYear = end.getFullYear();
+  
+  return `${startMonth}. ${startYear} - ${endMonth}. ${endYear} · ${duration}`;
+};
+
 export const experienceData: ExperienceItem[] = [
   {
     id: 1,
     company: "Nxtara",
     position: "Analista Desarrollador",
-    period: "may. 2025 - actualidad · 6 meses",
+    period: "", // Se calculará dinámicamente
+    startDate: "2025-05",
+    endDate: null, // null = actualidad
     location: "Gran Santiago, Región Metropolitana de Santiago, Chile · Presencial",
     type: "Jornada completa",
     description: "Desarrollo de nuevas funcionalidades en el sitio web de la tienda de joyerías Timantti, empleando React, Spring Boot, PostgreSQL y GIT. Implementación de blog con publicación de artículos, resolución de QAs e implementación de librerías NPM. Implementación de Google Analytics y Google Tag Manager en la página web oficial de Nxtara para medición de métricas del portal.",
