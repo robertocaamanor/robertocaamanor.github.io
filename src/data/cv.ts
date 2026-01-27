@@ -238,14 +238,12 @@ export const cvData: CVData = {
   
   // Habilidades blandas
   softSkills: [
-    "Liderazgo de equipos",
     "Comunicación efectiva",
     "Resolución de problemas",
     "Trabajo en equipo",
     "Adaptabilidad",
     "Pensamiento crítico",
-    "Gestión del tiempo",
-    "Mentoring"
+    "Gestión del tiempo"
   ],
   
   // Logros destacados
