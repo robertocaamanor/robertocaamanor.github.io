@@ -253,7 +253,7 @@ const ExperienceForm = ({ item, onSave, onCancel }: any) => {
     e.preventDefault();
     onSave({
       ...formData,
-      skills: formData.skills.split(',').map(s => s.trim()).filter(Boolean),
+      skills: formData.skills.split(',').map((s: string) => s.trim()).filter(Boolean),
     });
   };
 

@@ -9,7 +9,7 @@ interface Project {
   description: string;
   image: string;
   technologies: string[];
-  github?: string;
+  github?: string | { backend?: string; frontend?: string };
   demo?: string;
 }
 
