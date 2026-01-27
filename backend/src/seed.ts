@@ -2,9 +2,14 @@ import axios from 'axios';
 
 const API_URL = process.env.API_URL || 'http://localhost:3001';
 
-// Credenciales de administrador
-const ADMIN_EMAIL = 'raristides.caamano@gmail.com';
-const ADMIN_PASSWORD = 'R1p4.1991!';
+// Credenciales de administrador desde variables de entorno
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+
+if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
+  console.error('❌ Error: ADMIN_EMAIL y ADMIN_PASSWORD deben estar definidos en las variables de entorno');
+  process.exit(1);
+}
 
 // Datos de experiencia
 const experiences = [
