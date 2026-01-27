@@ -97,6 +97,52 @@ const CV: React.FC = () => {
     return period.replace('·', '|').replace('actualidad', 'Presente');
   };
 
+  const getPeriod = (experience: typeof experienceData[0]) => {
+    if (!experience.startDate) {
+      return formatPeriod(experience.period);
+    }
+
+    const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sept', 'oct', 'nov', 'dic'];
+    
+    // Crear fechas de manera más explícita para evitar problemas de zona horaria
+    const [startYear, startMonth] = experience.startDate.split('-').map(Number);
+    const start = new Date(startYear, startMonth - 1, 1); // Mes es 0-indexed
+    
+    let end: Date;
+    if (experience.endDate) {
+      const [endYear, endMonth] = experience.endDate.split('-').map(Number);
+      end = new Date(endYear, endMonth - 1, 1);
+    } else {
+      end = new Date();
+    }
+    
+    // Calcular duración
+    let totalMonths = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+    const years = Math.floor(totalMonths / 12);
+    const remainingMonths = totalMonths % 12;
+    
+    let duration = '';
+    if (years > 0 && remainingMonths > 0) {
+      duration = `${years} ${years === 1 ? 'año' : 'años'} ${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'}`;
+    } else if (years > 0) {
+      duration = `${years} ${years === 1 ? 'año' : 'años'}`;
+    } else {
+      duration = `${totalMonths} ${totalMonths === 1 ? 'mes' : 'meses'}`;
+    }
+    
+    // Formatear período
+    const startMonthName = months[start.getMonth()];
+    const startYearValue = start.getFullYear();
+    
+    if (!experience.endDate) {
+      return `${startMonthName}. ${startYearValue} | Presente | ${duration}`;
+    }
+    
+    const endMonthName = months[end.getMonth()];
+    const endYearValue = end.getFullYear();
+    return `${startMonthName}. ${startYearValue} | ${endMonthName}. ${endYearValue} | ${duration}`;
+  };
+
   const getMainSkills = () => {
     return experienceData
       .slice(0, 5)
@@ -254,7 +300,7 @@ const CV: React.FC = () => {
                       <div className="text-sm text-gray-600 text-right">
                         <div className="flex items-center gap-1 justify-end mb-1">
                           <CalendarIcon className="w-4 h-4" />
-                          <span className="text-xs">{formatPeriod(exp.period)}</span>
+                          <span className="text-xs">{getPeriod(exp)}</span>
                         </div>
                         <div className="text-xs">{exp.location}</div>
                       </div>
@@ -300,7 +346,7 @@ const CV: React.FC = () => {
                       </div>
                       <div className="text-xs text-gray-600 text-right ml-2">
                         <CalendarIcon className="w-3 h-3 inline mr-1" />
-                        {formatPeriod(exp.period)}
+                        {getPeriod(exp)}
                       </div>
                     </div>
                     
@@ -337,7 +383,7 @@ const CV: React.FC = () => {
                     <div key={exp.id} className="text-xs bg-gray-50 p-2 rounded border-l-2 border-gray-300">
                       <div className="font-medium text-gray-900">{exp.position}</div>
                       <div className="text-gray-700">{exp.company}</div>
-                      <div className="text-gray-500">{formatPeriod(exp.period).split('|')[0].trim()}</div>
+                      <div className="text-gray-500">{getPeriod(exp).split('|')[0].trim()}</div>
                     </div>
                   ))}
                 </div>

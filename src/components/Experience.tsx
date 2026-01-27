@@ -1,7 +1,54 @@
 import React from 'react';
-import { experienceData, experienceContent, formatPeriod } from '../data';
+import { experienceData, experienceContent } from '../data';
 
 const Experience: React.FC = () => {
+  // Función para calcular el período dinámicamente
+  const getPeriod = (experience: typeof experienceData[0]) => {
+    if (!experience.startDate) {
+      return experience.period;
+    }
+
+    const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sept', 'oct', 'nov', 'dic'];
+    
+    // Crear fechas de manera más explícita para evitar problemas de zona horaria
+    const [startYear, startMonth] = experience.startDate.split('-').map(Number);
+    const start = new Date(startYear, startMonth - 1, 1); // Mes es 0-indexed
+    
+    let end: Date;
+    if (experience.endDate) {
+      const [endYear, endMonth] = experience.endDate.split('-').map(Number);
+      end = new Date(endYear, endMonth - 1, 1);
+    } else {
+      end = new Date();
+    }
+    
+    // Calcular duración
+    let totalMonths = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+    const years = Math.floor(totalMonths / 12);
+    const remainingMonths = totalMonths % 12;
+    
+    let duration = '';
+    if (years > 0 && remainingMonths > 0) {
+      duration = `${years} ${years === 1 ? 'año' : 'años'} ${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'}`;
+    } else if (years > 0) {
+      duration = `${years} ${years === 1 ? 'año' : 'años'}`;
+    } else {
+      duration = `${totalMonths} ${totalMonths === 1 ? 'mes' : 'meses'}`;
+    }
+    
+    // Formatear período
+    const startMonthName = months[start.getMonth()];
+    const startYearValue = start.getFullYear();
+    
+    if (!experience.endDate) {
+      return `${startMonthName}. ${startYearValue} - Presente | ${duration}`;
+    }
+    
+    const endMonthName = months[end.getMonth()];
+    const endYearValue = end.getFullYear();
+    return `${startMonthName}. ${startYearValue} - ${endMonthName}. ${endYearValue} | ${duration}`;
+  };
+  
   return (
     <section id="experience" className="experience-section py-20">
       <div className="container mx-auto px-6">
@@ -37,10 +84,7 @@ const Experience: React.FC = () => {
                           <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                           </svg>
-                          {experience.startDate && experience.startDate !== '' 
-                            ? formatPeriod(experience.startDate, experience.endDate || null)
-                            : experience.period
-                          }
+                          {getPeriod(experience)}
                         </span>
                         <span className="flex items-center">
                           <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">

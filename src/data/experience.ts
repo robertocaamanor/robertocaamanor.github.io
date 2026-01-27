@@ -18,7 +18,13 @@ export const calculateDuration = (startDate: string, endDate: string | null = nu
   const start = new Date(startDate + '-01');
   const end = endDate ? new Date(endDate + '-01') : new Date();
   
-  const months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+  let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+  
+  // Si el día actual es menor que el día de inicio, restamos un mes
+  if (end.getDate() < start.getDate() && !endDate) {
+    months--;
+  }
+  
   const years = Math.floor(months / 12);
   const remainingMonths = months % 12;
   
@@ -27,7 +33,7 @@ export const calculateDuration = (startDate: string, endDate: string | null = nu
   } else if (years > 0) {
     return `${years} ${years === 1 ? 'año' : 'años'}`;
   } else {
-    return `${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'}`;
+    return `${months} ${months === 1 ? 'mes' : 'meses'}`;
   }
 };
 
@@ -41,7 +47,7 @@ export const formatPeriod = (startDate: string, endDate: string | null = null): 
   
   const duration = calculateDuration(startDate, endDate);
   
-  if (endDate === null) {
+  if (endDate === null || endDate === undefined) {
     return `${startMonth}. ${startYear} - actualidad · ${duration}`;
   }
   
