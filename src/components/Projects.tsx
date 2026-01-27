@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { projectsContent } from '../data';
-import { getProjects } from '../services/api';
+import { getProjects, deleteProject } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 
 interface Project {
   id: number;
@@ -15,21 +16,36 @@ interface Project {
 const Projects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { isAuthenticated, token } = useAuth();
 
   useEffect(() => {
-    const loadProjects = async () => {
-      try {
-        const data = await getProjects();
-        setProjects(data);
-      } catch (error) {
-        console.error('Error al cargar proyectos:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     loadProjects();
   }, []);
+
+  const loadProjects = async () => {
+    try {
+      const data = await getProjects();
+      setProjects(data);
+    } catch (error) {
+      console.error('Error al cargar proyectos:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleDelete = async (id: number) => {
+    if (!confirm('¿Estás seguro de que deseas eliminar este proyecto?')) {
+      return;
+    }
+
+    try {
+      await deleteProject(id, token!);
+      await loadProjects();
+    } catch (error) {
+      console.error('Error al eliminar proyecto:', error);
+      alert('Error al eliminar el proyecto');
+    }
+  };
 
   if (isLoading) {
     return (
@@ -71,9 +87,22 @@ const Projects = () => {
               </div>
               
               <div className="p-6">
-                <h3 className="project-title text-xl font-bold mb-3">
-                  {project.title}
-                </h3>
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="project-title text-xl font-bold flex-1">
+                    {project.title}
+                  </h3>
+                  {isAuthenticated && (
+                    <button
+                      onClick={() => handleDelete(project.id)}
+                      className="text-red-600 hover:bg-red-50 p-2 rounded-lg transition-colors ml-2"
+                      title="Eliminar"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
                 <p className="project-description mb-4 leading-relaxed">
                   {project.description}
                 </p>

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import { 
   personalInfo, 
@@ -16,11 +16,61 @@ import {
   AcademicCapIcon,
   TrophyIcon,
   ChatBubbleBottomCenterTextIcon,
-  PrinterIcon
+  PrinterIcon,
+  TrashIcon
 } from '@heroicons/react/24/outline';
+import { getCertifications, getEducation, deleteCertification, deleteEducation } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 
 const CV: React.FC = () => {
   const componentRef = useRef<HTMLDivElement>(null);
+  const { isAuthenticated, token } = useAuth();
+  const [certifications, setCertifications] = useState(cvData.certifications);
+  const [education, setEducation] = useState(cvData.education);
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = async () => {
+    try {
+      const [certsData, eduData] = await Promise.all([
+        getCertifications(),
+        getEducation()
+      ]);
+      if (certsData && Array.isArray(certsData)) {
+        setCertifications(certsData);
+      }
+      if (eduData && Array.isArray(eduData)) {
+        setEducation(eduData);
+      }
+    } catch (error) {
+      console.error('Error al cargar datos del CV:', error);
+      // Usar datos locales si falla el backend
+    }
+  };
+
+  const handleDeleteCertification = async (id: number) => {
+    if (!confirm('¿Estás seguro de que deseas eliminar esta certificación?')) return;
+    try {
+      await deleteCertification(id, token!);
+      await loadData();
+    } catch (error) {
+      console.error('Error al eliminar certificación:', error);
+      alert('Error al eliminar la certificación');
+    }
+  };
+
+  const handleDeleteEducation = async (id: number) => {
+    if (!confirm('¿Estás seguro de que deseas eliminar esta educación?')) return;
+    try {
+      await deleteEducation(id, token!);
+      await loadData();
+    } catch (error) {
+      console.error('Error al eliminar educación:', error);
+      alert('Error al eliminar la educación');
+    }
+  };
   
   const handlePrint = useReactToPrint({
     contentRef: componentRef,
@@ -399,8 +449,17 @@ const CV: React.FC = () => {
                 Educación
               </h3>
               <div className="space-y-3">
-                {cvData.education.map((edu) => (
-                  <div key={edu.id} className="border-l-4 border-green-600 pl-4 print-avoid-break">
+                {education.map((edu) => (
+                  <div key={edu.id} className="border-l-4 border-green-600 pl-4 print-avoid-break relative group">
+                    {isAuthenticated && (
+                      <button
+                        onClick={() => handleDeleteEducation(edu.id)}
+                        className="absolute -right-2 top-0 print-hide text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
+                        title="Eliminar"
+                      >
+                        <TrashIcon className="w-4 h-4" />
+                      </button>
+                    )}
                     <div className="flex justify-between items-start">
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900 text-sm">{edu.degree}</h4>
@@ -429,8 +488,17 @@ const CV: React.FC = () => {
                 Certificaciones
               </h3>
               <div className="grid gap-2">
-                {cvData.certifications.map((cert) => (
-                  <div key={cert.id} className="bg-gray-50 p-3 rounded-lg print-avoid-break">
+                {certifications.map((cert) => (
+                  <div key={cert.id} className="bg-gray-50 p-3 rounded-lg print-avoid-break relative group">
+                    {isAuthenticated && (
+                      <button
+                        onClick={() => handleDeleteCertification(cert.id)}
+                        className="absolute -right-1 -top-1 print-hide text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
+                        title="Eliminar"
+                      >
+                        <TrashIcon className="w-4 h-4" />
+                      </button>
+                    )}
                     <div className="flex justify-between items-start">
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900 text-sm">{cert.name}</h4>
