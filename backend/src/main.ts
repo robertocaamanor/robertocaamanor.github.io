@@ -9,7 +9,13 @@ async function bootstrap() {
   
   // Habilitar CORS para permitir requests desde el frontend
   app.enableCors({
-    origin: ['http://localhost:5173', 'http://localhost:3000', 'https://robertocaamanor.github.io'], 
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:3000',
+      'https://robertocaamanor.github.io',
+      'https://robertocaamano.com',
+      'https://www.robertocaamano.com'
+    ], 
     credentials: true,
   });
   

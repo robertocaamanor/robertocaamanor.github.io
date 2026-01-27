@@ -1,53 +1,49 @@
-import React from 'react';
-import { experienceData, experienceContent } from '../data';
+import React, { useState, useEffect } from 'react';
+import { experienceContent } from '../data';
+import { getExperiences } from '../services/api';
+
+interface ExperienceItem {
+  id: number;
+  company: string;
+  position: string;
+  period: string;
+  location: string;
+  type: string;
+  description: string;
+  skills: string[];
+}
 
 const Experience: React.FC = () => {
-  // Función para calcular el período dinámicamente
-  const getPeriod = (experience: typeof experienceData[0]) => {
-    if (!experience.startDate) {
-      return experience.period;
-    }
+  const [experienceData, setExperienceData] = useState<ExperienceItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-    const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sept', 'oct', 'nov', 'dic'];
-    
-    // Crear fechas de manera más explícita para evitar problemas de zona horaria
-    const [startYear, startMonth] = experience.startDate.split('-').map(Number);
-    const start = new Date(startYear, startMonth - 1, 1); // Mes es 0-indexed
-    
-    let end: Date;
-    if (experience.endDate) {
-      const [endYear, endMonth] = experience.endDate.split('-').map(Number);
-      end = new Date(endYear, endMonth - 1, 1);
-    } else {
-      end = new Date();
-    }
-    
-    // Calcular duración
-    let totalMonths = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
-    const years = Math.floor(totalMonths / 12);
-    const remainingMonths = totalMonths % 12;
-    
-    let duration = '';
-    if (years > 0 && remainingMonths > 0) {
-      duration = `${years} ${years === 1 ? 'año' : 'años'} ${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'}`;
-    } else if (years > 0) {
-      duration = `${years} ${years === 1 ? 'año' : 'años'}`;
-    } else {
-      duration = `${totalMonths} ${totalMonths === 1 ? 'mes' : 'meses'}`;
-    }
-    
-    // Formatear período
-    const startMonthName = months[start.getMonth()];
-    const startYearValue = start.getFullYear();
-    
-    if (!experience.endDate) {
-      return `${startMonthName}. ${startYearValue} - Presente | ${duration}`;
-    }
-    
-    const endMonthName = months[end.getMonth()];
-    const endYearValue = end.getFullYear();
-    return `${startMonthName}. ${startYearValue} - ${endMonthName}. ${endYearValue} | ${duration}`;
-  };
+  useEffect(() => {
+    const loadExperiences = async () => {
+      try {
+        const data = await getExperiences();
+        setExperienceData(data);
+      } catch (error) {
+        console.error('Error al cargar experiencias:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadExperiences();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <section id="experience" className="experience-section py-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+            <p className="text-gray-600 dark:text-gray-400 mt-4">Cargando experiencias...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
   
   return (
     <section id="experience" className="experience-section py-20">
@@ -84,7 +80,7 @@ const Experience: React.FC = () => {
                           <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                           </svg>
-                          {getPeriod(experience)}
+                          {experience.period}
                         </span>
                         <span className="flex items-center">
                           <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -108,7 +104,7 @@ const Experience: React.FC = () => {
                   
                   {/* Skills */}
                   <div className="flex flex-wrap gap-2">
-                    {experience.skills.map((skill, skillIndex) => (
+                    {experience.skills?.map((skill, skillIndex) => (
                       <span
                         key={skillIndex}
                         className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full font-medium"

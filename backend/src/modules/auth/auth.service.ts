@@ -47,18 +47,26 @@ export class AuthService {
   }
 
   async createAdminUser() {
+    const adminEmail = process.env.ADMIN_EMAIL;
+    const adminPassword = process.env.ADMIN_PASSWORD;
+
+    if (!adminEmail || !adminPassword) {
+      console.warn('ADMIN_EMAIL or ADMIN_PASSWORD not set in environment variables');
+      return null;
+    }
+
     const existingUser = await this.userRepository.findOne({ 
-      where: { email: 'raristides.caamano@gmail.com' } 
+      where: { email: adminEmail } 
     });
 
     if (existingUser) {
       return existingUser;
     }
 
-    const hashedPassword = await bcrypt.hash('R1p4.1991!', 10);
+    const hashedPassword = await bcrypt.hash(adminPassword, 10);
     
     const adminUser = this.userRepository.create({
-      email: 'raristides.caamano@gmail.com',
+      email: adminEmail,
       password: hashedPassword,
       role: 'admin',
     });

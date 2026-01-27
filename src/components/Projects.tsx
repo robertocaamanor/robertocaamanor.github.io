@@ -1,6 +1,48 @@
-import { projects, projectsContent } from '../data';
+import { useState, useEffect } from 'react';
+import { projectsContent } from '../data';
+import { getProjects } from '../services/api';
+
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  github?: string;
+  demo?: string;
+}
 
 const Projects = () => {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadProjects = async () => {
+      try {
+        const data = await getProjects();
+        setProjects(data);
+      } catch (error) {
+        console.error('Error al cargar proyectos:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadProjects();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <section id="projects" className="projects-section py-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+            <p className="text-gray-600 dark:text-gray-400 mt-4">Cargando proyectos...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="projects" className="projects-section py-20 transition-colors duration-200">
