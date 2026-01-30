@@ -15,19 +15,20 @@ export interface ExperienceItem {
 
 // Función helper para calcular la duración entre dos fechas
 export const calculateDuration = (startDate: string, endDate: string | null = null): string => {
-  const start = new Date(startDate + '-01');
-  const end = endDate ? new Date(endDate + '-01') : new Date();
-  
+  // Agregamos una hora segura (mediodía) para evitar problemas de zona horaria que puedan restar un día
+  const start = new Date(startDate + '-01T12:00:00');
+  const end = endDate ? new Date(endDate + '-01T12:00:00') : new Date();
+
   let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
-  
+
   // Si el día actual es menor que el día de inicio, restamos un mes
   if (end.getDate() < start.getDate() && !endDate) {
     months--;
   }
-  
+
   const years = Math.floor(months / 12);
   const remainingMonths = months % 12;
-  
+
   if (years > 0 && remainingMonths > 0) {
     return `${years} ${years === 1 ? 'año' : 'años'} ${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'}`;
   } else if (years > 0) {
@@ -40,21 +41,21 @@ export const calculateDuration = (startDate: string, endDate: string | null = nu
 // Función para formatear el período completo
 export const formatPeriod = (startDate: string, endDate: string | null = null): string => {
   const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sept', 'oct', 'nov', 'dic'];
-  
-  const start = new Date(startDate + '-01');
+
+  const start = new Date(startDate + '-01T12:00:00');
   const startMonth = months[start.getMonth()];
   const startYear = start.getFullYear();
-  
+
   const duration = calculateDuration(startDate, endDate);
-  
+
   if (endDate === null || endDate === undefined) {
     return `${startMonth}. ${startYear} - actualidad · ${duration}`;
   }
-  
-  const end = new Date(endDate + '-01');
+
+  const end = new Date(endDate + '-01T12:00:00');
   const endMonth = months[end.getMonth()];
   const endYear = end.getFullYear();
-  
+
   return `${startMonth}. ${startYear} - ${endMonth}. ${endYear} · ${duration}`;
 };
 
