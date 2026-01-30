@@ -1,6 +1,7 @@
 import { personalInfo, footerContent, navigationList, socialMediaList } from '../data';
 
 const Footer = () => {
+
   return (
     <footer className="footer-section text-white py-12 transition-colors duration-200">
       <div className="container mx-auto px-6">
@@ -61,10 +62,12 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-gray-800 dark:border-gray-900 mt-12 pt-8 text-center">
-          <p className="footer-text">
-            {footerContent.copyright}
-          </p>
+        <div className="border-t border-gray-800 dark:border-gray-900 mt-12 pt-8">
+          <div className="flex justify-center items-center">
+            <p className="footer-text">
+              {footerContent.copyright}
+            </p>
+          </div>
         </div>
       </div>
     </footer>

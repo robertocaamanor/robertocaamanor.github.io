@@ -32,6 +32,110 @@ export const cvData: CVData = {
   // Certificaciones
   certifications: [
     {
+      id: 11,
+      name: "Curso de Claude AI",
+      issuer: "Platzi",
+      date: "Enero 2026",
+      credentialId: "55227835-a9b1-4c49-b71c-f1c397374616-e0ea33d0-7391-4a1c-978c-e4b16ec63e06",
+      description: "Desarrollo con Claude AI y aplicaciones de inteligencia artificial"
+    },
+    {
+      id: 12,
+      name: "Curso de Next.js Avanzado",
+      issuer: "Platzi",
+      date: "Enero 2026",
+      credentialId: "9b40cf5b-43ad-4986-8e0e-0bdca0846e2b-d8c78f2d-57ab-4855-8f4f-22e9a74c100c",
+      description: "Técnicas avanzadas de desarrollo con Next.js"
+    },
+    {
+      id: 13,
+      name: "Curso de Prompt Engineering",
+      issuer: "Platzi",
+      date: "Enero 2026",
+      credentialId: "56c72fb1-90f3-490b-805d-d798a5261790-a3854eb7-9349-4ec7-b0f0-05f7d90a8e90",
+      description: "Fundamentos y técnicas avanzadas de Prompt Engineering"
+    },
+    {
+      id: 14,
+      name: "Curso de Gemini",
+      issuer: "Platzi",
+      date: "Diciembre 2025",
+      credentialId: "3fa5d447-7bab-45be-a0ba-e75dd4f944dd",
+      description: "Desarrollo con Google Gemini API"
+    },
+    {
+      id: 15,
+      name: "Curso de Next.js con GraphQL",
+      issuer: "Platzi",
+      date: "Diciembre 2025",
+      credentialId: "8c9dfba7-a77a-4800-9f4e-1dfd2e2d2a20-468c75ec-69bb-4357-8afe-af126c6a58ea",
+      description: "Integración de Next.js con GraphQL para APIs modernas"
+    },
+    {
+      id: 16,
+      name: "Curso de Windsurf AI",
+      issuer: "Platzi",
+      date: "Diciembre 2025",
+      credentialId: "6079a15d-6678-4059-86b7-8fdeac32ddad",
+      description: "Desarrollo con Windsurf AI"
+    },
+    {
+      id: 17,
+      name: "Curso de ChatGPT",
+      issuer: "Platzi",
+      date: "Noviembre 2025",
+      credentialId: "6e3666a1-863e-4a5f-a394-c50865a098ab",
+      description: "Desarrollo de aplicaciones con ChatGPT API"
+    },
+    {
+      id: 18,
+      name: "Curso de GraphQL con Node.js",
+      issuer: "Platzi",
+      date: "Noviembre 2025",
+      credentialId: "b8d940cf-ec5e-45c0-9087-a671020a331a",
+      description: "Desarrollo de APIs GraphQL con Node.js"
+    },
+    {
+      id: 19,
+      name: "Curso de Java Spring Boot",
+      issuer: "Platzi",
+      date: "Noviembre 2025",
+      credentialId: "3d5fbdbc-41dd-4fb0-a13e-be463ca90672",
+      description: "Desarrollo de aplicaciones con Spring Boot"
+    },
+    {
+      id: 20,
+      name: "Curso Microsoft Copilot 365. IA Generativa en Microsoft 365",
+      issuer: "Udemy",
+      date: "Octubre 2025",
+      credentialId: "UC-5e6501de-98e0-4394-a377-6f34ddd803c2",
+      description: "Inteligencia artificial generativa con Microsoft Copilot en Microsoft 365"
+    },
+    {
+      id: 21,
+      name: "Curso de API REST con Javascript",
+      issuer: "Platzi",
+      date: "Octubre 2025",
+      credentialId: "49edcc2e-4624-4635-a1d1-7acd63c2db53",
+      description: "Desarrollo de APIs REST con JavaScript"
+    },
+    {
+      id: 22,
+      name: "Curso de PostgreSQL",
+      issuer: "Platzi",
+      date: "Octubre 2025",
+      credentialId: "36f491aa-ae2d-4e27-b36d-3e344838a2ae",
+      description: "Base de datos relacional con PostgreSQL"
+    },
+    {
+      id: 23,
+      name: "Curso de Web Scraping con Python",
+      issuer: "Platzi",
+      date: "Octubre 2025",
+      credentialId: "e1eb3e60-1200-4396-9a36-5cc1cc6d083b",
+      description: "Web scraping y extracción de datos con Python"
+    },
+    {
       id: 1,
       name: "Curso de FastAPI",
       issuer: "Platzi",
@@ -134,14 +238,12 @@ export const cvData: CVData = {
   
   // Habilidades blandas
   softSkills: [
-    "Liderazgo de equipos",
     "Comunicación efectiva",
     "Resolución de problemas",
     "Trabajo en equipo",
     "Adaptabilidad",
     "Pensamiento crítico",
-    "Gestión del tiempo",
-    "Mentoring"
+    "Gestión del tiempo"
   ],
   
   // Logros destacados

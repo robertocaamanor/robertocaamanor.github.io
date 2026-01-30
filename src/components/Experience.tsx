@@ -1,7 +1,8 @@
 import React from 'react';
-import { experienceData, experienceContent } from '../data';
+import { experienceContent, experienceData, formatPeriod } from '../data';
 
 const Experience: React.FC = () => {
+  
   return (
     <section id="experience" className="experience-section py-20">
       <div className="container mx-auto px-6">
@@ -37,7 +38,7 @@ const Experience: React.FC = () => {
                           <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                           </svg>
-                          {experience.period}
+                          {experience.period || (experience.startDate ? formatPeriod(experience.startDate, experience.endDate) : '')}
                         </span>
                         <span className="flex items-center">
                           <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -53,6 +54,7 @@ const Experience: React.FC = () => {
                         </span>
                       </div>
                     </div>
+                    
                   </div>
                   
                   <p className="mb-4 leading-relaxed">
@@ -61,7 +63,7 @@ const Experience: React.FC = () => {
                   
                   {/* Skills */}
                   <div className="flex flex-wrap gap-2">
-                    {experience.skills.map((skill, skillIndex) => (
+                    {experience.skills?.map((skill, skillIndex) => (
                       <span
                         key={skillIndex}
                         className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full font-medium"

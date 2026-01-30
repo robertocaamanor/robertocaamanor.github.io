@@ -1,4 +1,4 @@
-import { projects, projectsContent } from '../data';
+import { projectsContent, projects } from '../data';
 
 const Projects = () => {
 
@@ -29,9 +29,11 @@ const Projects = () => {
               </div>
               
               <div className="p-6">
-                <h3 className="project-title text-xl font-bold mb-3">
-                  {project.title}
-                </h3>
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="project-title text-xl font-bold flex-1">
+                    {project.title}
+                  </h3>
+                </div>
                 <p className="project-description mb-4 leading-relaxed">
                   {project.description}
                 </p>
