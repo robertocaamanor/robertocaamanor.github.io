@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import { 
   personalInfo, 
@@ -16,8 +16,7 @@ import {
   AcademicCapIcon,
   TrophyIcon,
   ChatBubbleBottomCenterTextIcon,
-  PrinterIcon,
-  TrashIcon
+  PrinterIcon
 } from '@heroicons/react/24/outline';
 const CV: React.FC = () => {
   const componentRef = useRef<HTMLDivElement>(null);
