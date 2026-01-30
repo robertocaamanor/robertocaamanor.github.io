@@ -44,6 +44,18 @@ export const projects: Project[] = [
       backend: "https://github.com/robertocaamanor/ordena-tu-plata-backend",
       frontend: "https://github.com/robertocaamanor/ordena-tu-plata-frontend"
     }
+  },
+  {
+    id: 5,
+    title: "Disquería Personal",
+    description: "Aplicación web full-stack para gestión de colección personal de discos. Permite catalogar, buscar y organizar álbumes musicales con información detallada de artistas, géneros y años de lanzamiento.",
+    image: "/disqueria.png",
+    technologies: ["NestJS", "React", "TypeScript", "PostgreSQL", "Railway"],
+    github: {
+      backend: "https://github.com/robertocaamanor/disqueria-nestjs-api",
+      frontend: "https://github.com/robertocaamanor/disqueria-front-react"
+    },
+    demo: "https://disqueria-front-react-production.up.railway.app/"
   }
   // {
   //   id: 3,
