@@ -1,65 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { experienceContent } from '../data';
-import { getExperiences, deleteExperience } from '../services/api';
-import { useAuth } from '../context/AuthContext';
-
-interface ExperienceItem {
-  id: number;
-  company: string;
-  position: string;
-  period: string;
-  location: string;
-  type: string;
-  description: string;
-  skills: string[];
-}
+import React from 'react';
+import { experienceContent, experienceData } from '../data';
 
 const Experience: React.FC = () => {
-  const [experienceData, setExperienceData] = useState<ExperienceItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const { isAuthenticated, token } = useAuth();
-
-  useEffect(() => {
-    loadExperiences();
-  }, []);
-
-  const loadExperiences = async () => {
-    try {
-      const data = await getExperiences();
-      setExperienceData(data);
-    } catch (error) {
-      console.error('Error al cargar experiencias:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleDelete = async (id: number) => {
-    if (!confirm('¿Estás seguro de que deseas eliminar esta experiencia?')) {
-      return;
-    }
-
-    try {
-      await deleteExperience(id, token!);
-      await loadExperiences();
-    } catch (error) {
-      console.error('Error al eliminar experiencia:', error);
-      alert('Error al eliminar la experiencia');
-    }
-  };
-
-  if (isLoading) {
-    return (
-      <section id="experience" className="experience-section py-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="text-gray-600 dark:text-gray-400 mt-4">Cargando experiencias...</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
   
   return (
     <section id="experience" className="experience-section py-20">

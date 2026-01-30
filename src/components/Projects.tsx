@@ -1,64 +1,7 @@
-import { useState, useEffect } from 'react';
-import { projectsContent } from '../data';
-import { getProjects, deleteProject } from '../services/api';
-import { useAuth } from '../context/AuthContext';
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  technologies: string[];
-  github?: string | { backend?: string; frontend?: string };
-  demo?: string;
-}
+import { projectsContent, projectsData } from '../data';
 
 const Projects = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const { isAuthenticated, token } = useAuth();
-
-  useEffect(() => {
-    loadProjects();
-  }, []);
-
-  const loadProjects = async () => {
-    try {
-      const data = await getProjects();
-      setProjects(data);
-    } catch (error) {
-      console.error('Error al cargar proyectos:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleDelete = async (id: number) => {
-    if (!confirm('¿Estás seguro de que deseas eliminar este proyecto?')) {
-      return;
-    }
-
-    try {
-      await deleteProject(id, token!);
-      await loadProjects();
-    } catch (error) {
-      console.error('Error al eliminar proyecto:', error);
-      alert('Error al eliminar el proyecto');
-    }
-  };
-
-  if (isLoading) {
-    return (
-      <section id="projects" className="projects-section py-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="text-gray-600 dark:text-gray-400 mt-4">Cargando proyectos...</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  const projects = projectsData;
 
   return (
     <section id="projects" className="projects-section py-20 transition-colors duration-200">

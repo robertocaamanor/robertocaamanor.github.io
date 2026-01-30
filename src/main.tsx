@@ -4,7 +4,6 @@ import { HashRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
 import { ThemeProvider } from './context/ThemeContext.tsx'
-import { AuthProvider } from './context/AuthContext.tsx'
 
 // Handle GitHub Pages SPA routing
 const redirect = sessionStorage.redirect;
@@ -17,9 +16,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HashRouter>
       <ThemeProvider>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
+        <App />
       </ThemeProvider>
     </HashRouter>
   </StrictMode>,
