@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { experienceContent, experienceData, formatPeriod } from '../data';
 
 const Experience: React.FC = () => {
-  
+  const [showAll, setShowAll] = useState(false);
+  const visibleExperience = showAll ? experienceData : experienceData.slice(0, 2);
+
   return (
     <section id="experience" className="experience-section py-20">
       <div className="container mx-auto px-6">
@@ -17,12 +19,12 @@ const Experience: React.FC = () => {
           <div className="relative">
             {/* Timeline line */}
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-600"></div>
-            
-            {experienceData.map((experience) => (
+
+            {visibleExperience.map((experience) => (
               <div key={experience.id} className="relative mb-12 ml-20">
                 {/* Timeline dot */}
                 <div className="absolute -left-14 top-6 w-4 h-4 bg-blue-500 rounded-full border-4 border-white shadow-lg"></div>
-                
+
                 {/* Experience card */}
                 <div className="experience-card bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-500 hover:shadow-xl transition-all duration-300">
                   <div className="flex flex-wrap items-start justify-between mb-4">
@@ -54,13 +56,13 @@ const Experience: React.FC = () => {
                         </span>
                       </div>
                     </div>
-                    
+
                   </div>
-                  
+
                   <p className="mb-4 leading-relaxed">
                     {experience.description}
                   </p>
-                  
+
                   {/* Skills */}
                   <div className="flex flex-wrap gap-2">
                     {experience.skills?.map((skill, skillIndex) => (
@@ -75,6 +77,30 @@ const Experience: React.FC = () => {
                 </div>
               </div>
             ))}
+
+            {/* Read More Button */}
+            {!showAll && experienceData.length > 2 && (
+              <div className="text-center mt-8 ml-20">
+                <button
+                  onClick={() => setShowAll(true)}
+                  className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors shadow-md font-medium"
+                >
+                  Leer más
+                </button>
+              </div>
+            )}
+
+            {showAll && experienceData.length > 2 && (
+              <div className="text-center mt-8 ml-20">
+                <button
+                  onClick={() => setShowAll(false)}
+                  className="bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors shadow-md font-medium"
+                >
+                  Mostrar menos
+                </button>
+              </div>
+            )}
+
           </div>
         </div>
       </div>

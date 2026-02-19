@@ -23,13 +23,13 @@ const Header = () => {
           <div className="header-title text-2xl font-bold">
             {personalInfo.name}
           </div>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {location.pathname === '/' ? (
               <>
                 {navigationList.map((nav, index) => (
-                  <button 
+                  <button
                     key={index}
                     onClick={() => scrollToSection(nav.id)}
                     className="nav-link transition-colors"
@@ -37,12 +37,7 @@ const Header = () => {
                     {nav.label}
                   </button>
                 ))}
-                <Link
-                  to="/cv"
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
-                >
-                  Ver CV
-                </Link>
+
               </>
             ) : (
               <Link
@@ -52,7 +47,7 @@ const Header = () => {
                 ← Volver al Portafolio
               </Link>
             )}
-            
+
             {/* Dark Mode Toggle */}
             <button
               onClick={() => {
@@ -95,7 +90,7 @@ const Header = () => {
                 </svg>
               )}
             </button>
-            
+
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
@@ -114,7 +109,7 @@ const Header = () => {
               {location.pathname === '/' ? (
                 <>
                   {navigationList.map((nav, index) => (
-                    <button 
+                    <button
                       key={index}
                       onClick={() => scrollToSection(nav.id)}
                       className="text-left text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2"
@@ -122,13 +117,7 @@ const Header = () => {
                       {nav.label}
                     </button>
                   ))}
-                  <Link
-                    to="/cv"
-                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium text-center"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Ver CV
-                  </Link>
+
                 </>
               ) : (
                 <Link

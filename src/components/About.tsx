@@ -1,6 +1,14 @@
-import { skills, aboutContent, personalInfo } from '../data';
+import { aboutContent } from '../data';
 
 const About = () => {
+  const techSkills = {
+    "Backend": ["Spring Boot", "NodeJS", "ExpressJS", "NestJS", "Laravel"],
+    "Frontend": ["React", "Next.js", "VueJS"],
+    "Base de datos": ["PostgreSQL", "MongoDB", "SQL Server", "MySQL", "Oracle", "DB2"],
+    "CI/CD": ["AWS", "Docker", "Jenkins"],
+    "Plataformas": ["Google Gemini", "ChatGPT", "Github", "Figma", "VS Code", "Antigravity"],
+    "Automatización": ["Github Actions", "Railway", "Vercel"]
+  };
 
   return (
     <section id="about" className="about-section py-20 transition-colors duration-200">
@@ -14,41 +22,24 @@ const About = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="about-history-card rounded-2xl p-8 mb-8 transition-all duration-300">
-              <h3 className="text-2xl font-bold mb-4">{aboutContent.historyTitle}</h3>
-              <p className="about-history-text leading-relaxed">
-                {personalInfo.description.about}
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4">
-              <div className="about-experience-card p-6 rounded-xl text-center transition-all duration-300">
-                <div className="about-experience-number text-3xl font-bold mb-2">{personalInfo.yearsExperience}</div>
-                <div className="about-text">{aboutContent.experienceLabel}</div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="about-title text-2xl font-bold mb-8">{aboutContent.skillsTitle}</h3>
-            <div className="space-y-6">
-              {skills.map((skill, index) => (
-                <div key={index}>
-                  <div className="flex justify-between mb-2">
-                    <span className="about-text font-medium">{skill.name}</span>
-                    <span className="about-text">{skill.level}%</span>
-                  </div>
-                  <div className="skills-progress-bg rounded-full h-3 transition-colors duration-200">
-                    <div 
-                      className="skills-progress-fill h-3 rounded-full transition-all duration-1000 ease-out"
-                      style={{ width: `${skill.level}%` }}
-                    ></div>
-                  </div>
+        <div className="max-w-5xl mx-auto">
+          <h3 className="about-title text-2xl font-bold mb-8 text-center">Habilidades Técnicas</h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            {Object.entries(techSkills).map(([category, items]) => (
+              <div key={category} className="bg-white/5 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+                <h4 className="text-lg font-semibold mb-3 text-blue-600 dark:text-blue-400">{category}</h4>
+                <div className="flex flex-wrap gap-2">
+                  {items.map((skill, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm rounded-full font-medium"
+                    >
+                      {skill}
+                    </span>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
