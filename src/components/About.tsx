@@ -17,7 +17,7 @@ const About = () => {
           <h2 className="about-title text-4xl md:text-5xl font-bold mb-4">
             {aboutContent.title}
           </h2>
-          <p className="about-text text-xl max-w-2xl mx-auto">
+          <p className="about-text text-xl max-w-2xl mx-auto whitespace-pre-line">
             {aboutContent.subtitle}
           </p>
         </div>
