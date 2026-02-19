@@ -56,6 +56,15 @@ export const projects: Project[] = [
       frontend: "https://github.com/robertocaamanor/disqueria-front-react"
     },
     demo: "https://disqueria-front-react-production.up.railway.app/"
+  },
+  {
+    id: 6,
+    title: "Convertidor de Imagen a PDF",
+    description: "Agrupa una cantidad de fotos y los transforma en un documento digital descargable y adaptable a cada tamaño.",
+    image: "/convertidor-imagen-pdf.png",
+    technologies: ["React", "NPM", "Railway"],
+    github: "https://github.com/robertocaamanor/image-to-pdf",
+    demo: "https://image-to-pdf-production.up.railway.app/"
   }
   // {
   //   id: 3,
