@@ -208,5 +208,5 @@ export const experienceData: ExperienceItem[] = [
 // Textos de la sección de experiencia
 export const experienceContent = {
   title: "Experiencia Laboral",
-  subtitle: "Desde que en 2018 me establecí en Santiago de Chile, he tenido la oportunidad de trabajar con empresas de diversos tamaños y sectores, lo que me ha permitido desarrollar una visión integral del desarrollo de software y adaptarme a diferentes entornos de trabajo."
+  subtitle: "Desde que en 2017 me establecí en Santiago de Chile, he tenido la oportunidad de trabajar con empresas de diversos tamaños y sectores, lo que me ha permitido desarrollar una visión integral del desarrollo de software y adaptarme a diferentes entornos de trabajo."
 };
