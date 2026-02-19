@@ -12,7 +12,7 @@ export const skills = [
 // Textos de la sección About
 export const aboutContent = {
   title: "Acerca de mí",
-  subtitle: "Desde 2015, año en que hice mi práctica en Concepción, he estado realizando proyectos de transformación digital, empezando desde lo más tradicional hasta lo más moderno. Pasé de PHP a Spring Boot, de AngularJS a React, del ensayo/error a las pruebas unitarias, de Bootstrap a TailwindCSS. Mi trayectoria se basa en el aprendizaje constante y en los desafíos que me permitan crecer.\n\nDesde que en 2018 me establecí en Santiago de Chile, he tenido la oportunidad de trabajar con empresas de diversos tamaños y sectores, lo que me ha permitido desarrollar una visión integral del desarrollo de software y adaptarme a diferentes entornos de trabajo.",
+  subtitle: "Desde 2015, año en que hice mi práctica en Concepción, he estado realizando proyectos de transformación digital, empezando desde lo más tradicional hasta lo más moderno. Pasé de PHP a Spring Boot, de AngularJS a React, del ensayo/error a las pruebas unitarias, de Bootstrap a TailwindCSS. Mi trayectoria se basa en el aprendizaje constante y en los desafíos que me permitan crecer.",
   historyTitle: "Mi Historia",
   skillsTitle: "Habilidades Técnicas",
   experienceLabel: "Años de experiencia"
