@@ -12,7 +12,7 @@ export const skills = [
 // Textos de la sección About
 export const aboutContent = {
   title: "Acerca de mí",
-  subtitle: "Desarrollador apasionado con experiencia en tecnologías modernas",
+  subtitle: "Desde 2018 realizando diferentes proyectos de transformación digital",
   historyTitle: "Mi Historia",
   skillsTitle: "Habilidades Técnicas",
   experienceLabel: "Años de experiencia"

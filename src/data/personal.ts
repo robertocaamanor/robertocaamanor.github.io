@@ -18,7 +18,7 @@ export const personalInfo = {
   yearsExperience: "8+",
   description: {
     short: "Desarrollador apasionado con experiencia en tecnologías modernas",
-    hero: "Desarrollador Full Stack apasionado por crear experiencias digitales increíbles y soluciones innovadoras",
+    hero: "Desde 2015 realizando proyectos de transformación digital, empezando desde lo más tradicional hasta lo más moderno. Pasé de PHP a Spring Boot, de AngularJS a React, del ensayo/error a las pruebas unitarias, de Bootstrap a TailwindCSS. Mi trayectoria se basa en el aprendizaje constante y en los desafíos que me permitan crecer.\n\nDesde 2018 establecido en Santiago de Chile, he tenido la oportunidad de trabajar con empresas de diversos tamaños y sectores, lo que me ha permitido desarrollar una visión integral del desarrollo de software y adaptarme a diferentes entornos de trabajo.",
     footer: "Desarrollador Full Stack apasionado por crear soluciones digitales innovadoras y experiencias de usuario excepcionales.",
     about: "Soy un desarrollador full stack con más de 8 años de experiencia creando aplicaciones web modernas. Me especializo en React, TypeScript, Spring Boot y Node.js, siempre buscando las mejores prácticas y tecnologías emergentes."
   }
