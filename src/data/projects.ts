@@ -65,6 +65,15 @@ export const projects: Project[] = [
     technologies: ["React", "NPM", "Railway"],
     github: "https://github.com/robertocaamanor/image-to-pdf",
     demo: "https://image-to-pdf-production.up.railway.app/"
+  },
+  {
+    id: 7,
+    title: "API Viña 2026",
+    description: "API REST para el Festival Internacional de la Canción de Viña del Mar 2026. Proporciona información detallada sobre artistas, presentaciones, horarios y eventos del festival.",
+    image: "/api-vina-2026.png",
+    technologies: ["NestJS", "TypeScript", "Swagger", "Railway", "JWT"],
+    github: "https://github.com/robertocaamanor/api-vina-2026",
+    demo: "https://api-vina-2026-production.up.railway.app/docs"
   }
   // {
   //   id: 3,
